@@ -63,7 +63,7 @@
 
       // Удаляем ненужные элементы управления
       map.removeControl(map.zoomControl);
-      map.removeControl(map.attributionControl);
+      //map.removeControl(map.attributionControl);
 
       // Добавляем изображение
       var imageUrl = 'map.svg';
@@ -74,38 +74,40 @@
 
       function createOneIcon(size) {
         return L.icon({
-          iconUrl: '1way.svg',
+          iconUrl: 'empty.png',
           iconSize: [size, size],
           className: 'icon'
         });
       }
       function createTwoIcon(size) {
         return L.icon({
-          iconUrl: '2way.svg',
+          iconUrl: 'empty.png',
           iconSize: [size * 3, size],
           className: 'icon'
         });
       }
       function createThreeIcon(size) {
         return L.icon({
-          iconUrl: '3way.svg',
-          iconSize: [size * 4, size],
+          iconUrl: 'empty.png',
+          iconSize: [size * 3.8, size],
           className: 'icon'
         });
       }
       function createFourIcon(size) {
         return L.icon({
-          iconUrl: '4way.svg',
-          iconSize: [size * 5, size],
+          iconUrl: 'empty.png',
+          iconSize: [size * 5.25, size],
           className: 'icon'
         });
       }
 
-      var riverantMarker = L.marker([437, 501], {icon: createThreeIcon(originalIconSize)}).addTo(map)
+
+
+      var riverantMarker = L.marker([437.5, 500.5], {icon: createThreeIcon(originalIconSize)}, className="L6").addTo(map)
         .bindPopup('Riverant')
         .openPopup();
 
-      var timberlandMarker = L.marker([401, 338], {icon: createOneIcon(originalIconSize)}).addTo(map)
+      var timberlandMarker = L.marker([401.5, 338.5], {icon: createOneIcon(originalIconSize)}).addTo(map) // <3
         .bindPopup('Timberland')
         .openPopup();
 
@@ -113,9 +115,91 @@
         .bindPopup('Central')
         .openPopup();
 
-      var wompMarker = L.marker([518, 578], {icon: createOneIcon(originalIconSize)}).addTo(map)
+      var wompwompMarker = L.marker([518, 578], {icon: createOneIcon(originalIconSize)}).addTo(map)
         .bindPopup('Womp Womp')
         .openPopup();
+
+      var andesworthMarker = L.marker([330, 485], {icon: createOneIcon(originalIconSize)}).addTo(map)
+        .bindPopup('Port Andersworth')
+        .openPopup();
+
+      var krunkeriaMarker = L.marker([651.25, 874.5], {icon: createOneIcon(originalIconSize)}).addTo(map)
+        .bindPopup('Krunkeria')
+        .openPopup();
+
+      var cherryvilleMarker = L.marker([719.5, 693.25], {icon: createOneIcon(originalIconSize)}).addTo(map)
+        .bindPopup('Cherryville')
+        .openPopup();
+
+      var blossomingValleyMarker = L.marker([775, 683.5], {icon: createTwoIcon(originalIconSize)}).addTo(map)
+        .bindPopup('Blossoming Valley')
+        .openPopup();
+
+      var newportMarker = L.marker([830, 654.5], {icon: createOneIcon(originalIconSize)}).addTo(map)
+        .bindPopup('Newport')
+        .openPopup();
+
+      var lyciaBridgeMarker = L.marker([920, 606.5], {icon: createFourIcon(originalIconSize)}).addTo(map)
+        .bindPopup('Lycia Bridge')
+        .openPopup();
+
+      var capitalisoriaMarker = L.marker([954.25, 548.5], {icon: createOneIcon(originalIconSize)}).addTo(map)
+        .bindPopup('Capitalisoria')
+        .openPopup();
+
+      var rublenikaMarker = L.marker([990, 759.2], {icon: createOneIcon(originalIconSize)}).addTo(map)
+        .bindPopup('Rublenika')
+        .openPopup();
+
+      var refineryMarker = L.marker([793.7, 477.5], {icon: createOneIcon(originalIconSize)}).addTo(map)
+        .bindPopup('Refinery')
+        .openPopup();
+
+      var fortBoreasMarker = L.marker([793.7, 311.5], {icon: createOneIcon(originalIconSize)}).addTo(map)
+        .bindPopup('Fort Boreas')
+        .openPopup();
+
+      var hammeringtonMarker = L.marker([722.75, 311.5], {icon: createOneIcon(originalIconSize)}).addTo(map)
+        .bindPopup('Hammerington')
+        .openPopup();
+
+      var middleseaBeachMarker = L.marker([348, 219], {icon: createOneIcon(originalIconSize)}).addTo(map)
+        .bindPopup('Middlesea Beach')
+        .openPopup();
+
+      var jungletownIndustrialMarker = L.marker([294.75, 219], {icon: createOneIcon(originalIconSize)}).addTo(map) // <3
+        .bindPopup('Jungletown Industrial')
+        .openPopup();
+
+      var jungletownTempleMarker = L.marker([241, 238], {icon: createThreeIcon(originalIconSize)}).addTo(map)
+        .bindPopup('Jungletown Temple')
+        .openPopup();
+
+      var communistaMarker = L.marker([241, 414], {icon: createTwoIcon(originalIconSize)}).addTo(map)
+        .bindPopup('Communista')
+        .openPopup();
+
+      var grimsbyPeaksMarker = L.marker([136, 248], {icon: createTwoIcon(originalIconSize)}).addTo(map)
+        .bindPopup('Greamsby Peaks')
+        .openPopup();
+
+      var oakridgeMarker = L.marker([107, 321.25], {icon: createOneIcon(originalIconSize)}).addTo(map)
+        .bindPopup('Oakridge')
+        .openPopup();
+
+      var CheeselandMarker = L.marker([107, 386.75], {icon: createOneIcon(originalIconSize)}).addTo(map) //🧀
+        .bindPopup('Cheeseland')
+        .openPopup();
+
+      var staraWiesMarker = L.marker([107, 442.5], {icon: createOneIcon(originalIconSize)}).addTo(map) // amaza
+        .bindPopup('Stara Wies')
+        .openPopup();
+
+      var newIndustriaMarker = L.marker([90.25, 168.75], {icon: createOneIcon(originalIconSize)}).addTo(map) // no lag🤗
+        .bindPopup('New Industria')
+        .openPopup();
+
+
 
       // Устанавливаем область видимости карты
       map.fitBounds(imageBounds);
@@ -125,27 +209,80 @@
 
       function updateIconSizes() {
         var currentZoom = map.getZoom();
-        var newSize;
-        if (currentZoom > 1) {
-          newSize = originalIconSize * Math.pow(1.25, currentZoom); // Коэффициент увеличения
+        var elements = document.querySelectorAll('.icon');
+        var newOneSize;
+        var newOneSizeEnd;
+        var newTwoSize;
+        var newThreeSize;
+        var newFourSize;
+        elements.forEach(function(element) {
+          element.style.display = '';
+        });
+        if (currentZoom === 2) {
+          newOneSize = 60
+          newOneSizeEnd = 75
+          newTwoSize = 54.5
+          newThreeSize = 60
+          newFourSize = 60
         } 
         else if (currentZoom === 1) {
-            newSize = 40
+          newOneSize = 30.75
+          newOneSizeEnd = 42
+          newTwoSize = 25.5
+          newThreeSize = 30
+          newFourSize = 30
         } 
         else if (currentZoom === 0) {
-            newSize = 20
+          newOneSize = 15.8
+          newOneSizeEnd = 22
+          newTwoSize = 14
+          newThreeSize = 15.5
+          newFourSize = 15
         } 
-        else if (currentZoom < 0) {
-          newSize = originalIconSize / Math.pow(5.5, -currentZoom); // Коэффициент уменьшения
+        else if (currentZoom === -1) {
+          newOneSize = 8.25
+          newOneSizeEnd = 10
+          newTwoSize = 7.25
+          newThreeSize = 8
+          newFourSize = 7.7
         }
-        riverantMarker.setIcon(createThreeIcon(newSize));
-        timberlandMarker.setIcon(createOneIcon(newSize));
-        centralMarker.setIcon(createFourIcon(newSize));
-        wompMarker.setIcon(createOneIcon(newSize));
+        riverantMarker.setIcon(createThreeIcon(newThreeSize));
+        timberlandMarker.setIcon(createOneIcon(newOneSize));
+        centralMarker.setIcon(createFourIcon(newFourSize));
+        wompwompMarker.setIcon(createOneIcon(newOneSize));
+        andesworthMarker.setIcon(createOneIcon(newOneSizeEnd));
+        krunkeriaMarker.setIcon(createOneIcon(newOneSizeEnd));
+        cherryvilleMarker.setIcon(createOneIcon(newOneSize));
+        blossomingValleyMarker.setIcon(createTwoIcon(newTwoSize));
+        newportMarker.setIcon(createOneIcon(newTwoSize));
+        lyciaBridgeMarker.setIcon(createFourIcon(newFourSize));
+        capitalisoriaMarker.setIcon(createOneIcon(newOneSizeEnd));
+        rublenikaMarker.setIcon(createOneIcon(newOneSizeEnd));
+        refineryMarker.setIcon(createOneIcon(newOneSize));
+        fortBoreasMarker.setIcon(createOneIcon(newOneSize));
+        hammeringtonMarker.setIcon(createOneIcon(newOneSize));
+        middleseaBeachMarker.setIcon(createOneIcon(newOneSize));
+        jungletownIndustrialMarker.setIcon(createOneIcon(newOneSize));
+        jungletownTempleMarker.setIcon(createThreeIcon(newThreeSize));
+        communistaMarker.setIcon(createTwoIcon(newTwoSize));
+        grimsbyPeaksMarker.setIcon(createTwoIcon(newTwoSize));
+        oakridgeMarker.setIcon(createOneIcon(newOneSize));
+        CheeselandMarker.setIcon(createOneIcon(newOneSize));
+        staraWiesMarker.setIcon(createOneIcon(newOneSizeEnd));
+        newIndustriaMarker.setIcon(createOneIcon(newOneSizeEnd));
+
+        console.log(currentZoom)
       }
 
       // Обработчик события "zoomend" для изменения размера значков при зуме
       map.on('zoomend', updateIconSizes);
+
+      map.on('zoomstart', function(){
+        var elements = document.querySelectorAll('.icon');
+        elements.forEach(function(element) {
+          element.style.display = 'none';
+        });
+      });
 
       // Обновляем размер значков при загрузке страницы
       updateIconSizes();

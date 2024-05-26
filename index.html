@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Веб-карта</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    #map {
+      width: 100vw;
+      height: 100vh;
+      background-color: #fcfaf3;
+      z-index: 0;
+    }
+
+    .logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 1%;
+    }
+
+    .legend {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        margin: 1%;
+        margin-right: 0;
+    }
+
+    .icon {
+      max-width: 38px !important;
+      max-height: 38px !important;
+    }
+
+  </style>
+  <!-- Подключаем Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+  <div id="map"></div>
+
+  <svg class="logo" width="393" height="148">
+    <image href="logo.svg"/>
+  </svg>
+
+  <svg class="legend" width="250" height="328">
+    <image href="legend.svg"/>
+  </svg>
+
+  <script>
+    // Загружаем Leaflet JS после того, как документ полностью загрузится
+    window.onload = function () {
+      // Создаем карту с указанным фоном и изображением
+      var map = L.map('map', {
+        crs: L.CRS.Simple,
+        minZoom: -1, // Установите минимальное значение зума, чтобы изображение занимало весь контейнер
+        maxZoom: 2 // Устанавливаем максимальное значение зума
+      });
+
+      // Удаляем ненужные элементы управления
+      map.removeControl(map.zoomControl);
+      map.removeControl(map.attributionControl);
+
+      // Добавляем изображение
+      var imageUrl = 'map.svg';
+      var imageBounds = [[0, 0], [1000, 1000]]; // Замените 1000 на размеры вашего изображения
+      L.imageOverlay(imageUrl, imageBounds).addTo(map);
+
+      var originalIconSize = 50; // Оригинальный размер иконки
+
+      function createOneIcon(size) {
+        return L.icon({
+          iconUrl: '1way.svg',
+          iconSize: [size, size],
+          className: 'icon'
+        });
+      }
+      function createTwoIcon(size) {
+        return L.icon({
+          iconUrl: '2way.svg',
+          iconSize: [size * 3, size],
+          className: 'icon'
+        });
+      }
+      function createThreeIcon(size) {
+        return L.icon({
+          iconUrl: '3way.svg',
+          iconSize: [size * 4, size],
+          className: 'icon'
+        });
+      }
+      function createFourIcon(size) {
+        return L.icon({
+          iconUrl: '4way.svg',
+          iconSize: [size * 5, size],
+          className: 'icon'
+        });
+      }
+
+      var riverantMarker = L.marker([437, 501], {icon: createThreeIcon(originalIconSize)}).addTo(map)
+        .bindPopup('Riverant')
+        .openPopup();
+
+      var timberlandMarker = L.marker([401, 338], {icon: createOneIcon(originalIconSize)}).addTo(map)
+        .bindPopup('Timberland')
+        .openPopup();
+
+      var centralMarker = L.marker([598, 645], {icon: createFourIcon(originalIconSize)}).addTo(map)
+        .bindPopup('Central')
+        .openPopup();
+
+      var wompMarker = L.marker([518, 578], {icon: createOneIcon(originalIconSize)}).addTo(map)
+        .bindPopup('Womp Womp')
+        .openPopup();
+
+      // Устанавливаем область видимости карты
+      map.fitBounds(imageBounds);
+
+      // Отключаем двойное нажатие для зума
+      map.doubleClickZoom.disable();
+
+      function updateIconSizes() {
+        var currentZoom = map.getZoom();
+        var newSize;
+        if (currentZoom > 1) {
+          newSize = originalIconSize * Math.pow(1.25, currentZoom); // Коэффициент увеличения
+        } 
+        else if (currentZoom === 1) {
+            newSize = 40
+        } 
+        else if (currentZoom === 0) {
+            newSize = 20
+        } 
+        else if (currentZoom < 0) {
+          newSize = originalIconSize / Math.pow(5.5, -currentZoom); // Коэффициент уменьшения
+        }
+        riverantMarker.setIcon(createThreeIcon(newSize));
+        timberlandMarker.setIcon(createOneIcon(newSize));
+        centralMarker.setIcon(createFourIcon(newSize));
+        wompMarker.setIcon(createOneIcon(newSize));
+      }
+
+      // Обработчик события "zoomend" для изменения размера значков при зуме
+      map.on('zoomend', updateIconSizes);
+
+      // Обновляем размер значков при загрузке страницы
+      updateIconSizes();
+    };
+  </script>
+
+  <!-- Подключаем Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</body>
+</html>

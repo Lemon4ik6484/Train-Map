@@ -59,6 +59,187 @@
       }
     }
 
+    .logo, .legend {
+      z-index: 1500;
+    }
+
+    .LineButton {
+      height: 22px;
+      width: 22px;
+      display: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    }
+
+    .overlay-active #overlay {
+      display: block;
+    }
+
+    .A.Glow {
+      box-shadow: 0 0 5px 5px #ff7575;
+      border-radius: 5%;
+    }
+
+    .B.Glow {
+      box-shadow: 0 0 5px 5px #ff8bfa;
+      border-radius: 5%;
+    }
+
+    .L1.Glow {
+      box-shadow: 0 0 5px 5px #58c4ff;
+      border-radius: 5%;
+    }
+
+    .L2.Glow {
+      box-shadow: 0 0 5px 5px #ff8bfa;
+      border-radius: 5%;
+    }
+
+    .L6.Glow {
+      box-shadow: 0 0 5px 5px #41da5b;
+      border-radius: 5%;
+    }
+
+    .R12.Glow {
+      box-shadow: 0 0 5px 5px #ffc52a;
+      border-radius: 5%;
+    }
+
+    .R13.Glow {
+      box-shadow: 0 0 5px 5px #ff8bfa;
+      border-radius: 5%;
+    }
+
+    .R14.Glow {
+      box-shadow: 0 0 5px 5px #8b7fe9;
+      border-radius: 5%;
+    }
+
+    .L21.Glow {
+      box-shadow: 0 0 5px 5px #5f8199;
+      border-radius: 5%;
+    }
+
+    .L22.Glow {
+      box-shadow: 0 0 5px 5px #819db2;
+      border-radius: 5%;
+    }
+
+    .L23.Glow {
+      box-shadow: 0 0 5px 5px #5f8199;
+      border-radius: 5%;
+    }
+
+    #A_btn {
+      position: absolute; 
+      top: 18.5%; 
+      left: 17%;
+      height: 24px;
+      width: 24px;
+      background: none;
+    }
+
+    #B_btn {
+      position: absolute; 
+      top: 18.5%; 
+      left: 28%;
+      height: 24px;
+      width: 24px;
+      background: none;
+    }
+
+    #L1_btn {
+      position: absolute; 
+      top: 52.5%; 
+      left: 17%;
+      height: 20px;
+      width: 20px;
+      background: none;
+    }
+
+    #L2_btn {
+      position: absolute; 
+      top: 52.5%; 
+      left: 29%;
+      height: 20px;
+      width: 20px;
+      background: none;
+    }
+
+    #L6_btn {
+      position: absolute; 
+      top: 52.5%; 
+      left: 41%;
+      height: 20px;
+      width: 20px;
+      background: none;
+    }
+
+    #R12_btn {
+      position: absolute; 
+      top: 0%; 
+      left: 0%;
+      height: 20px;
+      width: 20px;
+      background: none;
+    }
+
+    #R13_btn {
+      position: absolute; 
+      top: 0%; 
+      left: 0%;
+      height: 20px;
+      width: 20px;
+      background: none;
+    }
+
+    #R14_btn {
+      position: absolute; 
+      top: 0%; 
+      left: 0%;
+      height: 20px;
+      width: 20px;
+      background: none;
+    }
+
+    #L21_btn {
+      position: absolute; 
+      top: 0%; 
+      left: 0%;
+      height: 20px;
+      width: 20px;
+      background: none;
+    }
+
+    #L22_btn {
+      position: absolute; 
+      top: 0%; 
+      left: 0%;
+      height: 20px;
+      width: 20px;
+      background: none;
+    }
+
+    #L23_btn {
+      position: absolute; 
+      top: 0%; 
+      left: 0%;
+      height: 20px;
+      width: 20px;
+      background: none;
+    }
+
   </style>
   <!-- Подключаем Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -74,51 +255,91 @@
     <svg width="250" height="328">
       <image href="legend.svg" width="100%" height="100%"/>
     </svg>
+    <button id="A_btn" onclick="toggleOverlay('A')"></button>
+    <button id="B_btn" onclick="toggleOverlay('B')"></button>
+    <button id="L1_btn" onclick="toggleOverlay('L1')"></button>
+    <button id="L2_btn" onclick="toggleOverlay('L2')"></button>
+    <button id="L6_btn" onclick="toggleOverlay('L6')"></button>
+    <button id="R12_btn" onclick="toggleOverlay('R12')"></button>
+    <button id="R13_btn" onclick="toggleOverlay('R13')"></button>
+    <button id="R14_btn" onclick="toggleOverlay('R14')"></button>
+    <button id="L21_btn" onclick="toggleOverlay('L21')"></button>
+    <button id="L22_btn" onclick="toggleOverlay('L22')"></button>
+    <button id="L23_btn" onclick="toggleOverlay('L23')"></button>
   </div>
 
   <div id="overlay" onclick="toggleOverlay()"></div>
 
   <script>
-    function getDeviceType() {
-        const ua = navigator.userAgent;
-        const tabletRegex = /(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i;
-        const mobRegex = /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/;
+    function add_glow(line) {
+      if (line === 'L1') {
+        L.DomUtil.addClass(riverantMarker._icon, 'Glow');
+        L.DomUtil.addClass(timberlandMarker._icon, 'Glow');
+        L.DomUtil.addClass(centralMarker._icon, 'Glow');
+        L.DomUtil.addClass(wompwompMarker._icon, 'Glow');
+        L.DomUtil.addClass(blossomingValleyMarker._icon, 'Glow');
+        L.DomUtil.addClass(newportMarker._icon, 'Glow');
+        L.DomUtil.addClass(lyciaBridgeMarker._icon, 'Glow');
+      } else if (line === 'L2') {
+        L.DomUtil.addClass(centralMarker._icon, 'Glow');
+        L.DomUtil.addClass(cherryvilleMarker._icon, 'Glow');
+        L.DomUtil.addClass(blossomingValleyMarker._icon, 'Glow');
+        L.DomUtil.addClass(refineryMarker._icon, 'Glow');
+        L.DomUtil.addClass(fortBoreasMarker._icon, 'Glow');
+        L.DomUtil.addClass(hammeringtonMarker._icon, 'Glow');
+      }
+    }
 
-        if (tabletRegex.test(ua)) return "tablet";
-        if (mobRegex.test(ua)) return "mobile";
-        return "desktop";
+    function remove_glow(line) {
+      if (line === 'L1') {
+        L.DomUtil.removeClass(riverantMarker._icon, 'Glow');
+        L.DomUtil.removeClass(timberlandMarker._icon, 'Glow');
+        L.DomUtil.removeClass(centralMarker._icon, 'Glow');
+        L.DomUtil.removeClass(wompwompMarker._icon, 'Glow');
+        L.DomUtil.removeClass(blossomingValleyMarker._icon, 'Glow');
+        L.DomUtil.removeClass(newportMarker._icon, 'Glow');
+        L.DomUtil.removeClass(lyciaBridgeMarker._icon, 'Glow');
+      } else if (line === 'L2') {
+        L.DomUtil.removeClass(centralMarker._icon, 'Glow');
+        L.DomUtil.removeClass(cherryvilleMarker._icon, 'Glow');
+        L.DomUtil.removeClass(blossomingValleyMarker._icon, 'Glow');
+        L.DomUtil.removeClass(refineryMarker._icon, 'Glow');
+        L.DomUtil.removeClass(fortBoreasMarker._icon, 'Glow');
+        L.DomUtil.removeClass(hammeringtonMarker._icon, 'Glow');
+      }
+    }
+
+    function toggleOverlay(line) {
+      var overlay = document.getElementById('overlay');
+      overlay.classList.toggle('overlay-active');
+
+      var map = document.getElementById('map');
+      if (map.style.backgroundColor) {
+        map.style.backgroundColor = '';
+      } else {
+        map.style.backgroundColor = '#7e7d7a';
+      }
+      if (document.getElementById('overlay').classList.contains('overlay-active')) {
+        add_glow(line);
+      } else {
+        remove_glow(line);
+      }
     }
     // Загружаем Leaflet JS после того, как документ полностью загрузится
     window.onload = function () {
       // Создаем карту с указанным фоном и изображением
-      var device = getDeviceType()
-      console.log(device)
-      if (device === "tablet") {
-        var map = L.map('map', {
-          crs: L.CRS.Simple,
-          minZoom: -1,
-          maxZoom: 1
-        });
-      } else if (device === "mobile") {
-        var map = L.map('map', {
-          crs: L.CRS.Simple,
-          minZoom: -1,
-          maxZoom: 0
-        });
-      } else if (device === "desktop") {
-        var map = L.map('map', {
-          crs: L.CRS.Simple,
-          minZoom: -1,
-          maxZoom: 1
-        });
-      }
+      var map = L.map('map', {
+        crs: L.CRS.Simple,
+        minZoom: -2, // Установите минимальное значение зума, чтобы изображение занимало весь контейнер
+        maxZoom: 3 // Устанавливаем максимальное значение зума
+      });
 
       // Удаляем ненужные элементы управления
       map.removeControl(map.zoomControl);
       //map.removeControl(map.attributionControl);
 
       // Добавляем изображение
-      var imageUrl = 'empty.png';
+      var imageUrl = 'map.svg';
       var imageBounds = [[0, 0], [1000, 1000]]; // Замените 1000 на размеры вашего изображения
       L.imageOverlay(imageUrl, imageBounds).addTo(map);
 
@@ -126,28 +347,28 @@
 
       function createOneIcon(size) {
         return L.icon({
-          iconUrl: 'empty.png',
+          iconUrl: '1way.svg',
           iconSize: [size, size],
           className: 'icon'
         });
       };
       function createTwoIcon(size) {
         return L.icon({
-          iconUrl: 'empty.png',
+          iconUrl: '2way.svg',
           iconSize: [size * 3, size],
           className: 'icon'
         });
       };
       function createThreeIcon(size) {
         return L.icon({
-          iconUrl: 'empty.png',
+          iconUrl: '3way.svg',
           iconSize: [size * 3.8, size],
           className: 'icon'
         });
       };
       function createFourIcon(size) {
         return L.icon({
-          iconUrl: 'empty.png',
+          iconUrl: '4way.svg',
           iconSize: [size * 5.25, size],
           className: 'icon'
         });
@@ -232,6 +453,8 @@
       // Отключаем двойное нажатие для зума
       map.doubleClickZoom.disable();
 
+      L.DomUtil.addClass(timberlandMarker._icon, 'L6');
+
       function updateIconSizes() {
         var currentZoom = map.getZoom();
         var elements = document.querySelectorAll('.icon');
@@ -243,8 +466,6 @@
         elements.forEach(function(element) {
           element.style.display = '';
         });
-
-        console.log(currentZoom);
 
         if (currentZoom === 3) {
           newOneSize = 120

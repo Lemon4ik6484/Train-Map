@@ -15,11 +15,13 @@
       margin: 0;
       padding: 0;
     }
+    
     #map {
       width: 100vw;
       height: 100vh;
       background-color: #fcfaf3;
       z-index: 0;
+      border: #41da5b;
     }
 
     .logo {
@@ -61,6 +63,24 @@
 
     .logo, .legend {
       z-index: 1500;
+    }
+
+    .logo {
+      margin: 1%;
+    }
+
+    .legend {
+      display: inline-flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: stretch;
+      align-content: stretch;
+      margin: 1%;
+    }
+
+    .legend_item {
+      margin: 3%;
     }
 
     .LineButton {
@@ -144,8 +164,8 @@
 
     #A_btn {
       position: absolute; 
-      top: 18.50%; 
-      left: 17%;
+      top: 19.5%; 
+      left: 13.75%;
       height: 24px;
       width: 24px;
       background: none;
@@ -154,8 +174,8 @@
 
     #B_btn {
       position: absolute; 
-      top: 18.50%; 
-      left: 28%;
+      top: 19.5%; 
+      left: 27.75%;
       height: 24px;
       width: 24px;
       background: none;
@@ -164,8 +184,8 @@
 
     #L1_btn {
       position: absolute; 
-      top: 52.50%; 
-      left: 17%;
+      top: 53.25%; 
+      left: 14.25%;
       height: 20px;
       width: 20px;
       background: none;
@@ -174,8 +194,8 @@
 
     #L2_btn {
       position: absolute; 
-      top: 52.50%; 
-      left: 29%;
+      top: 53.25%; 
+      left: 28.75%;
       height: 20px;
       width: 20px;
       background: none;
@@ -184,8 +204,8 @@
 
     #L6_btn {
       position: absolute; 
-      top: 52.50%; 
-      left: 41%;
+      top: 53.25%; 
+      left: 42.5%;
       height: 20px;
       width: 20px;
       background: none;
@@ -194,8 +214,8 @@
 
     #R12_btn {
       position: absolute; 
-      top: 70%; 
-      left: 17%;
+      top: 69.75%; 
+      left: 14.75%;
       height: 20px;
       width: 20px;
       background: none;
@@ -204,8 +224,8 @@
 
     #R13_btn {
       position: absolute; 
-      top: 70%; 
-      left: 29%;
+      top: 69.75%; 
+      left: 28.5%;
       height: 20px;
       width: 20px;
       background: none;
@@ -214,8 +234,8 @@
 
     #R14_btn {
       position: absolute; 
-      top: 70%; 
-      left: 41%;
+      top: 69.75%; 
+      left: 42%;
       height: 20px;
       width: 20px;
       background: none;
@@ -224,8 +244,8 @@
 
     #L21_btn {
       position: absolute; 
-      top: 87%; 
-      left: 17%;
+      top: 86.5%; 
+      left: 14.5%;
       height: 20px;
       width: 20px;
       background: none;
@@ -234,8 +254,8 @@
 
     #L22_btn {
       position: absolute; 
-      top: 87%; 
-      left: 29%;
+      top: 86.5%; 
+      left: 28.5%;
       height: 20px;
       width: 20px;
       background: none;
@@ -244,13 +264,21 @@
 
     #L23_btn {
       position: absolute; 
-      top: 87%; 
-      left: 41%;
+      top: 86.5%; 
+      left: 42.25%;
       height: 20px;
       width: 20px;
       background: none;
       border: none;
     }
+
+    .oneWay.glowing {border-radius: 50%;}
+
+    .twoWay.glowing {border-radius: 20% 20% 20% 20% / 50% 50% 50% 50%;}
+
+    .threeWay.glowing {border-radius: 15% 15% 15% 15% / 50% 50% 50% 50%;}
+
+    .fourWay.glowing {border-radius: 10% 10% 10% 10% / 50% 50% 50% 50%;}
 
   </style>
   <!-- Подключаем Leaflet CSS -->
@@ -259,14 +287,18 @@
 <body>
   <div id="map"></div>
 
-  <svg class="logo ui" width="393" height="148">
+  <svg class="logo ui" width="589.5" height="222">
     <image href="logo.svg" width="100%" height="100%"/>
   </svg>
 
   <div class="legend updateIconSizes">
-    <svg width="250" height="328">
-      <image href="legend.svg" width="100%" height="100%"/>
+    <svg class="legend_item" width="225" height="106.5">
+      <image href="legend_up.svg" width="100%" height="100%"/>
     </svg>
+    <svg class="legend_item" width="223.5" height="228">
+      <image href="legend_bottom.svg" width="100%" height="100%"/>
+    </svg>
+
     <button id="A_btn" onclick="toggleOverlay('A')"></button>
     <button id="B_btn" onclick="toggleOverlay('B')"></button>
     <button id="L1_btn" onclick="toggleOverlay('L1')"></button>
@@ -293,6 +325,7 @@
 
         elements.forEach(function(element) {
           element.classList.add(glowClass);
+          element.classList.add('glowing');
         });
       }
     }
@@ -304,6 +337,7 @@
         for (let line of line_glows) {
           if (station.classList.contains(line)) {
             station.classList.remove(line);
+            station.classList.remove('glowing');
           }
         }
       });
@@ -368,8 +402,8 @@
       // Создаем карту с указанным фоном и изображением
       var map = L.map('map', {
         crs: L.CRS.Simple,
-        minZoom: -2, // Установите минимальное значение зума, чтобы изображение занимало весь контейнер
-        maxZoom: 3 // Устанавливаем максимальное значение зума
+        minZoom: -1, // Установите минимальное значение зума, чтобы изображение занимало весь контейнер
+        maxZoom: 2 // Устанавливаем максимальное значение зума
       });
 
       // Удаляем ненужные элементы управления
@@ -385,103 +419,103 @@
 
       function createOneIcon(size) {
         return L.icon({
-          iconUrl: '1way.svg',
+          iconUrl: 'empty.png',
           iconSize: [size, size],
           className: 'icon'
         });
       };
       function createTwoIcon(size) {
         return L.icon({
-          iconUrl: '2way.svg',
-          iconSize: [size * 3, size],
+          iconUrl: 'empty.png',
+          iconSize: [size * 2.75, size],
           className: 'icon'
         });
       };
       function createThreeIcon(size) {
         return L.icon({
-          iconUrl: '3way.svg',
-          iconSize: [size * 3.8, size],
+          iconUrl: 'empty.png',
+          iconSize: [size * 4, size],
           className: 'icon'
         });
       };
       function createFourIcon(size) {
         return L.icon({
-          iconUrl: '4way.svg',
-          iconSize: [size * 5.25, size],
+          iconUrl: 'empty.png',
+          iconSize: [size * 4.9, size],
           className: 'icon'
         });
       };
 
-      riverantMarker = L.marker([437.5, 500.5], {icon: createThreeIcon(originalIconSize)}).addTo(map)
+      riverantMarker = L.marker([436.8, 494.9], {icon: createThreeIcon(originalIconSize)}).addTo(map)
         .bindPopup('Riverant')
         .openPopup();
-      timberlandMarker = L.marker([401.5, 338.5], {icon: createOneIcon(originalIconSize)}, {className: "L6"}).addTo(map)
+      timberlandMarker = L.marker([403.5, 355], {icon: createOneIcon(originalIconSize)}).addTo(map)
         .bindPopup('Timberland')
         .openPopup();
-      centralMarker = L.marker([598, 645], {icon: createFourIcon(originalIconSize)}).addTo(map)
+      centralMarker = L.marker([586.75, 620], {icon: createFourIcon(originalIconSize)}).addTo(map)
         .bindPopup('Central')
         .openPopup();
-      wompwompMarker = L.marker([518, 578], {icon: createOneIcon(originalIconSize)}).addTo(map)
+      wompwompMarker = L.marker([511.75, 561.5], {icon: createOneIcon(originalIconSize)}).addTo(map)
         .bindPopup('Womp Womp')
         .openPopup();
-      andesworthMarker = L.marker([330, 485], {icon: createOneIcon(originalIconSize)}).addTo(map)
+      andesworthMarker = L.marker([337, 481.75], {icon: createOneIcon(originalIconSize)}).addTo(map)
         .bindPopup('Port Andesworth')
         .openPopup();
-      krunkeriaMarker = L.marker([651.25, 874.5], {icon: createOneIcon(originalIconSize)}).addTo(map)
+      krunkeriaMarker = L.marker([637, 818], {icon: createOneIcon(originalIconSize)}).addTo(map)
         .bindPopup('Krunkeria')
         .openPopup();
-      cherryvilleMarker = L.marker([719.5, 693.25], {icon: createOneIcon(originalIconSize)}).addTo(map)
+      cherryvilleMarker = L.marker([700, 662], {icon: createOneIcon(originalIconSize)}).addTo(map)
         .bindPopup('Cherryville')
         .openPopup();
-      blossomingValleyMarker = L.marker([775, 683.5], {icon: createTwoIcon(originalIconSize)}).addTo(map)
+      blossomingValleyMarker = L.marker([752, 653], {icon: createTwoIcon(originalIconSize)}).addTo(map)
         .bindPopup('Blossoming Valley')
         .openPopup();
-      newportMarker = L.marker([830, 654.5], {icon: createOneIcon(originalIconSize)}).addTo(map)
+      newportMarker = L.marker([803.35, 628.37], {icon: createOneIcon(originalIconSize)}).addTo(map)
         .bindPopup('Newport')
         .openPopup();
-      lyciaBridgeMarker = L.marker([920, 606.5], {icon: createFourIcon(originalIconSize)}).addTo(map)
+      lyciaBridgeMarker = L.marker([886.75, 587], {icon: createFourIcon(originalIconSize)}).addTo(map)
         .bindPopup('Lycia Bridge')
         .openPopup();
-      capitalisoriaMarker = L.marker([954.25, 548.5], {icon: createOneIcon(originalIconSize)}).addTo(map)
+      capitalisoriaMarker = L.marker([920, 536.75], {icon: createOneIcon(originalIconSize)}).addTo(map)
         .bindPopup('Capitalisoria')
         .openPopup();
-      rublenikaMarker = L.marker([990, 759.2], {icon: createOneIcon(originalIconSize)}).addTo(map)
+      rublenikaMarker = L.marker([953.3, 718], {icon: createOneIcon(originalIconSize)}).addTo(map)
         .bindPopup('Rublenika')
         .openPopup();
-      refineryMarker = L.marker([793.7, 477.5], {icon: createOneIcon(originalIconSize)}).addTo(map)
+      refineryMarker = L.marker([770, 474.85], {icon: createOneIcon(originalIconSize)}).addTo(map)
         .bindPopup('Refinery')
         .openPopup();
-      fortBoreasMarker = L.marker([793.7, 311.5], {icon: createOneIcon(originalIconSize)}).addTo(map)
+      fortBoreasMarker = L.marker([770, 331.7], {icon: createOneIcon(originalIconSize)}).addTo(map)
         .bindPopup('Fort Boreas')
         .openPopup();
-      hammeringtonMarker = L.marker([722.75, 311.5], {icon: createOneIcon(originalIconSize)}).addTo(map)
+      hammeringtonMarker = L.marker([703.5, 331.7], {icon: createOneIcon(originalIconSize)}).addTo(map)
         .bindPopup('Hammerington')
         .openPopup();
-      middleseaBeachMarker = L.marker([348, 219], {icon: createOneIcon(originalIconSize)}).addTo(map)
+      middleseaBeachMarker = L.marker([353.4, 251.6], {icon: createOneIcon(originalIconSize)}).addTo(map)
         .bindPopup('Middlesea Beach')
         .openPopup();
-      jungletownIndustrialMarker = L.marker([294.75, 219], {icon: createOneIcon(originalIconSize)}).addTo(map)
+      jungletownIndustrialMarker = L.marker([303.4, 251.6], {icon: createOneIcon(originalIconSize)}).addTo(map)
         .bindPopup('Jungletown Industrial')
         .openPopup();
-      jungletownTempleMarker = L.marker([241, 238], {icon: createThreeIcon(originalIconSize)}).addTo(map)
+      jungletownTempleMarker = L.marker([253.25, 268.25], {icon: createThreeIcon(originalIconSize)}).addTo(map)
         .bindPopup('Jungletown Temple')
         .openPopup();
-      communistaMarker = L.marker([241, 414], {icon: createTwoIcon(originalIconSize)}).addTo(map)
+      communistaMarker = L.marker([253.5, 420], {icon: createTwoIcon(originalIconSize)}).addTo(map)
         .bindPopup('Communista')
         .openPopup();
-      grimsbyPeaksMarker = L.marker([136, 248], {icon: createTwoIcon(originalIconSize)}).addTo(map)
+      grimsbyPeaksMarker = L.marker([155, 276.5], {icon: createTwoIcon(originalIconSize)}).addTo(map)
         .bindPopup('Greamsby Peaks')
         .openPopup();
-      oakridgeMarker = L.marker([107, 321.25], {icon: createOneIcon(originalIconSize)}).addTo(map)
+      oakridgeMarker = L.marker([128.5, 340], {icon: createOneIcon(originalIconSize)}).addTo(map)
         .bindPopup('Oakridge')
         .openPopup();
-      CheeselandMarker = L.marker([107, 386.75], {icon: createOneIcon(originalIconSize)}).addTo(map)
+      CheeselandMarker = L.marker([128.5, 396.5], {icon: createOneIcon(originalIconSize)}).addTo(map)
         .bindPopup('Cheeseland')
         .openPopup();
-      staraWiesMarker = L.marker([107, 442.5], {icon: createOneIcon(originalIconSize)}).addTo(map)
+      staraWiesMarker = L.marker([128.5, 444.7], {icon: createOneIcon(originalIconSize)}).addTo(map)
         .bindPopup('Stara Wies')
         .openPopup();
-      newIndustriaMarker = L.marker([90.25, 168.75], {icon: createOneIcon(originalIconSize)}).addTo(map)
+      newIndustriaMarker = L.marker([111.5, 208.25], {icon: createOneIcon(originalIconSize)}).addTo(map)
         .bindPopup('New Industria')
         .openPopup();
 
@@ -490,8 +524,6 @@
 
       // Отключаем двойное нажатие для зума
       map.doubleClickZoom.disable();
-
-      L.DomUtil.addClass(timberlandMarker._icon, 'L6');
 
       function updateIconSizes() {
         var currentZoom = map.getZoom();
@@ -511,30 +543,30 @@
           newTwoSize = 109
           newThreeSize = 120
           newFourSize = 120
-        } else if (currentZoom === 2) {
-          newOneSize = 60
-          newOneSizeEnd = 75
-          newTwoSize = 54.5
-          newThreeSize = 60
-          newFourSize = 60
+        } else if (currentZoom === 2) { // limit
+          newOneSize = 53
+          newOneSizeEnd = 60
+          newTwoSize = 49
+          newThreeSize = 50
+          newFourSize = 54
         } else if (currentZoom === 1) {
-          newOneSize = 30.75
-          newOneSizeEnd = 42
-          newTwoSize = 25.5
-          newThreeSize = 30
-          newFourSize = 30
+          newOneSize = 26.5
+          newOneSizeEnd = 33
+          newTwoSize = 25
+          newThreeSize = 25
+          newFourSize = 27
         } else if (currentZoom === 0) {
-          newOneSize = 15.8
-          newOneSizeEnd = 22
-          newTwoSize = 14
-          newThreeSize = 15.5
-          newFourSize = 15
-        } else if (currentZoom === -1) {
-          newOneSize = 8.25
-          newOneSizeEnd = 10
-          newTwoSize = 7.25
-          newThreeSize = 8
-          newFourSize = 7.7
+          newOneSize = 12
+          newOneSizeEnd = 15
+          newTwoSize = 12
+          newThreeSize = 12
+          newFourSize = 14
+        } else if (currentZoom === -1) { //limit
+          newOneSize = 6.5
+          newOneSizeEnd = 7
+          newTwoSize = 6.5
+          newThreeSize = 6.5
+          newFourSize = 6.5
         } else if (currentZoom === -2) {
           newOneSize = 4
           newOneSizeEnd = 5
@@ -568,30 +600,30 @@
         staraWiesMarker.setIcon(createOneIcon(newOneSizeEnd));
         newIndustriaMarker.setIcon(createOneIcon(newOneSizeEnd));
         
-        L.DomUtil.addClass(riverantMarker._icon, 'L1 L6 L23');
-        L.DomUtil.addClass(timberlandMarker._icon, 'L6');
-        L.DomUtil.addClass(centralMarker._icon, 'A B L1 L2');
-        L.DomUtil.addClass(wompwompMarker._icon, 'L1');
-        L.DomUtil.addClass(andesworthMarker._icon, 'L23');
-        L.DomUtil.addClass(krunkeriaMarker._icon, 'B');
-        L.DomUtil.addClass(cherryvilleMarker._icon, 'L2');
-        L.DomUtil.addClass(blossomingValleyMarker._icon, 'L1 L2');
-        L.DomUtil.addClass(newportMarker._icon, 'L1');
-        L.DomUtil.addClass(lyciaBridgeMarker._icon, 'A L1 L21 L22');
-        L.DomUtil.addClass(capitalisoriaMarker._icon, 'L21');
-        L.DomUtil.addClass(rublenikaMarker._icon, 'L22');
-        L.DomUtil.addClass(refineryMarker._icon, 'L2');
-        L.DomUtil.addClass(fortBoreasMarker._icon, 'L2');
-        L.DomUtil.addClass(hammeringtonMarker._icon, 'L2');
-        L.DomUtil.addClass(middleseaBeachMarker._icon, 'L6');
-        L.DomUtil.addClass(jungletownIndustrialMarker._icon, 'L6');
-        L.DomUtil.addClass(jungletownTempleMarker._icon, 'L6 R13 R14');
-        L.DomUtil.addClass(communistaMarker._icon, 'R12 R13');
-        L.DomUtil.addClass(grimsbyPeaksMarker._icon, 'R12 R14');
-        L.DomUtil.addClass(oakridgeMarker._icon, 'R14');
-        L.DomUtil.addClass(CheeselandMarker._icon, 'R14');
-        L.DomUtil.addClass(staraWiesMarker._icon, 'R14');
-        L.DomUtil.addClass(newIndustriaMarker._icon, 'R12');
+        L.DomUtil.addClass(riverantMarker._icon, 'threeWay L1 L6 L23');
+        L.DomUtil.addClass(timberlandMarker._icon, 'oneWay L6');
+        L.DomUtil.addClass(centralMarker._icon, 'fourWay A B L1 L2');
+        L.DomUtil.addClass(wompwompMarker._icon, 'oneWay L1');
+        L.DomUtil.addClass(andesworthMarker._icon, 'oneWay L23');
+        L.DomUtil.addClass(krunkeriaMarker._icon, 'oneWay B');
+        L.DomUtil.addClass(cherryvilleMarker._icon, 'oneWay L2');
+        L.DomUtil.addClass(blossomingValleyMarker._icon, 'twoWay L1 L2');
+        L.DomUtil.addClass(newportMarker._icon, 'oneWay L1');
+        L.DomUtil.addClass(lyciaBridgeMarker._icon, 'fourWay A L1 L21 L22');
+        L.DomUtil.addClass(capitalisoriaMarker._icon, 'oneWay L21');
+        L.DomUtil.addClass(rublenikaMarker._icon, 'oneWay L22');
+        L.DomUtil.addClass(refineryMarker._icon, 'oneWay L2');
+        L.DomUtil.addClass(fortBoreasMarker._icon, 'oneWay L2');
+        L.DomUtil.addClass(hammeringtonMarker._icon, 'oneWay L2');
+        L.DomUtil.addClass(middleseaBeachMarker._icon, 'oneWay L6');
+        L.DomUtil.addClass(jungletownIndustrialMarker._icon, 'oneWay L6');
+        L.DomUtil.addClass(jungletownTempleMarker._icon, 'threeWay L6 R13 R14');
+        L.DomUtil.addClass(communistaMarker._icon, 'twoWay R12 R13');
+        L.DomUtil.addClass(grimsbyPeaksMarker._icon, 'twoWay R12 R14');
+        L.DomUtil.addClass(oakridgeMarker._icon, 'oneWay R14');
+        L.DomUtil.addClass(CheeselandMarker._icon, 'oneWay R14');
+        L.DomUtil.addClass(staraWiesMarker._icon, 'oneWay R14');
+        L.DomUtil.addClass(newIndustriaMarker._icon, 'oneWay R12');
 
         var classes = document.getElementById('overlay').classList;
         var lineToAdd = classes.length > 1 ? classes[1] : null;

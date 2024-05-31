@@ -312,6 +312,13 @@
       z-index: 1500;
     }
 
+    #map {
+      -webkit-user-select: none;  /* Chrome, Safari, Opera */
+      -moz-user-select: none;     /* Firefox */
+      -ms-user-select: none;      /* Internet Explorer/Edge */
+      user-select: none;          /* Non-prefixed version, currently supported by most browsers */
+    }
+
   </style>
   <!-- Подключаем Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />

@@ -44,19 +44,19 @@
     }
 
     @media (max-width: 600px) {
-      .logo, .legend {
+      .logo, .legend, .theme_btn {
         max-width: 200px;
       }
     }
 
     @media (min-width: 601px) and (max-width: 1024px) {
-      .logo, .legend {
+      .logo, .legend, .theme_btn {
         max-width: 250px;
       }
     }
 
     @media (min-width: 1025px) {
-      .logo, .legend {
+      .logo, .legend, .theme_btn {
         max-width: 300px;
       }
     }
@@ -109,57 +109,67 @@
     .A_Glow {
       box-shadow: 0 0 5px 5px #ff7575;
       border-radius: 50%;
+      background-color: rgba(255, 117, 117, 0.25);
     }
 
     .B_Glow {
       box-shadow: 0 0 5px 5px #ff8bfa;
       border-radius: 50%;
+      background-color: rgba(255, 139, 250, 0.25);
     }
 
     .L1_Glow {
       box-shadow: 0 0 5px 5px #58c4ff;
       border-radius: 50%;
+      background-color: rgba(88, 196, 255, 0.25);
     }
 
     .L2_Glow {
       box-shadow: 0 0 5px 5px #ff8bfa;
       border-radius: 50%;
+      background-color: rgba(255, 139, 250, 0.25);
     }
 
     .L6_Glow {
-      box-shadow: 0 0 5px 5px #41da5b;
+      box-shadow: 0 0 5px 5px #81fc95;
       border-radius: 50%;
-      background-color: rgba(65, 218, 91, 0.25);
+      background-color: rgba(129, 252, 149, 0.25);
     }
 
     .R12_Glow {
       box-shadow: 0 0 5px 5px #ffc52a;
       border-radius: 50%;
+      background-color: rgba(255, 197, 42, 0.25);
     }
 
     .R13_Glow {
       box-shadow: 0 0 5px 5px #ff8bfa;
       border-radius: 50%;
+      background-color: rgba(255, 139, 250, 0.25);
     }
 
     .R14_Glow {
       box-shadow: 0 0 5px 5px #8b7fe9;
       border-radius: 50%;
+      background-color: rgba(139, 127, 233, 0.25);
     }
 
     .L21_Glow {
       box-shadow: 0 0 5px 5px #5f8199;
       border-radius: 50%;
+      background-color: rgba(95, 129, 153, 0.25);
     }
 
     .L22_Glow {
       box-shadow: 0 0 5px 5px #819db2;
       border-radius: 50%;
+      background-color: rgba(129, 157, 178, 0.25);
     }
 
     .L23_Glow {
       box-shadow: 0 0 5px 5px #5f8199;
       border-radius: 50%;
+      background-color: rgba(95, 129, 153, 0.25);
     }
 
     #A_btn {
@@ -170,6 +180,7 @@
       width: 24px;
       background: none;
       border: none;
+      cursor: pointer;
     }
 
     #B_btn {
@@ -180,6 +191,7 @@
       width: 24px;
       background: none;
       border: none;
+      cursor: pointer;
     }
 
     #L1_btn {
@@ -190,6 +202,7 @@
       width: 20px;
       background: none;
       border: none;
+      cursor: pointer;
     }
 
     #L2_btn {
@@ -200,6 +213,7 @@
       width: 20px;
       background: none;
       border: none;
+      cursor: pointer;
     }
 
     #L6_btn {
@@ -210,6 +224,7 @@
       width: 20px;
       background: none;
       border: none;
+      cursor: pointer;
     }
 
     #R12_btn {
@@ -220,6 +235,7 @@
       width: 20px;
       background: none;
       border: none;
+      cursor: pointer;
     }
 
     #R13_btn {
@@ -230,6 +246,7 @@
       width: 20px;
       background: none;
       border: none;
+      cursor: pointer;
     }
 
     #R14_btn {
@@ -240,6 +257,7 @@
       width: 20px;
       background: none;
       border: none;
+      cursor: pointer;
     }
 
     #L21_btn {
@@ -250,6 +268,7 @@
       width: 20px;
       background: none;
       border: none;
+      cursor: pointer;
     }
 
     #L22_btn {
@@ -260,6 +279,7 @@
       width: 20px;
       background: none;
       border: none;
+      cursor: pointer;
     }
 
     #L23_btn {
@@ -270,6 +290,7 @@
       width: 20px;
       background: none;
       border: none;
+      cursor: pointer;
     }
 
     .oneWay.glowing {border-radius: 50%;}
@@ -280,23 +301,41 @@
 
     .fourWay.glowing {border-radius: 10% 10% 10% 10% / 50% 50% 50% 50%;}
 
+    .darkMode {
+      background-color: #080e1e !important;
+    }
+
+    .theme_btn{
+      position: fixed;
+      top: 1%;
+      right: 1%;
+      z-index: 1500;
+    }
+
   </style>
   <!-- Подключаем Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
+  <div id="theme_button" class="theme_btn">
+    <svg width="75">
+      <image id="theme_img" href="./sun.svg" wigth="50%" height="50%"/>
+    </svg>
+  </div>
   <div id="map"></div>
 
-  <svg class="logo ui" width="589.5" height="222">
-    <image href="logo.svg" width="100%" height="100%"/>
-  </svg>
+  <a href="https://sites.google.com/view/sb-ctd/home" target="_blank">
+    <svg class="logo ui" width="589.5" height="222">
+      <image id="logo_img" href="logo.svg" width="100%" height="100%"/>
+    </svg>
+  </a>
 
   <div class="legend updateIconSizes">
     <svg class="legend_item" width="225" height="106.5">
-      <image href="legend_up.svg" width="100%" height="100%"/>
+      <image id="legend_up_img" href="legend_up.svg" width="100%" height="100%"/>
     </svg>
     <svg class="legend_item" width="223.5" height="228">
-      <image href="legend_bottom.svg" width="100%" height="100%"/>
+      <image id="legend_bottom_img" href="legend_bottom.svg" width="100%" height="100%"/>
     </svg>
 
     <button id="A_btn" onclick="toggleOverlay('A')"></button>
@@ -316,6 +355,46 @@
 
   <script>
     line_glows = ["A_Glow", "B_Glow", "L1_Glow", "L2_Glow", "L6_Glow", "R12_Glow", "R13_Glow", "R14_Glow", "L21_Glow", "L22_Glow", "L23_Glow"];
+    imageBounds = [[0, 0], [1000, 1000]];
+    const themeBtn = document.getElementById("theme_button");
+    const darkModeKey = "TrainMapDarkMode";
+
+    const enableDarkMode = () => {
+      document.body.classList.add("darkMode");
+      document.getElementById("map").classList.add("darkMode");
+      localStorage.setItem(darkModeKey, "true");
+
+      map.removeLayer(currentOverlay);
+      currentOverlay = L.imageOverlay("./dark_map.svg", imageBounds).addTo(map);
+
+      document.getElementById("logo_img").setAttribute('href', "./logo_dark.svg");
+      document.getElementById("legend_bottom_img").setAttribute('href', "./legend_bottom_dark.svg");
+      document.getElementById("legend_up_img").setAttribute('href', "./legend_up_dark.svg");
+      document.getElementById("theme_img").setAttribute('href', "./moon.svg");
+    };
+
+    const disableDarkMode = () => {
+      document.body.classList.remove("darkMode");
+      document.getElementById("map").classList.remove("darkMode");
+      localStorage.setItem(darkModeKey, "false");
+
+      map.removeLayer(currentOverlay);
+      currentOverlay = L.imageOverlay("./map.svg", imageBounds).addTo(map);
+
+      document.getElementById("logo_img").setAttribute('href', "./logo.svg");
+      document.getElementById("legend_bottom_img").setAttribute('href', "./legend_bottom.svg");
+      document.getElementById("legend_up_img").setAttribute('href', "./legend_up.svg");
+      document.getElementById("theme_img").setAttribute('href', "./sun.svg");
+    };
+
+    themeBtn.onclick = () => {
+      themeBtn.classList.toggle("moon");
+      if (themeBtn.classList.contains("moon")) {
+        enableDarkMode();
+      } else {
+        disableDarkMode();
+      }
+    };
 
     function add_glow(line) {
       var glowClass = line + '_Glow';
@@ -400,7 +479,7 @@
     // Загружаем Leaflet JS после того, как документ полностью загрузится
     window.onload = function () {
       // Создаем карту с указанным фоном и изображением
-      var map = L.map('map', {
+      map = L.map('map', {
         crs: L.CRS.Simple,
         minZoom: -1, // Установите минимальное значение зума, чтобы изображение занимало весь контейнер
         maxZoom: 2 // Устанавливаем максимальное значение зума
@@ -411,9 +490,16 @@
       //map.removeControl(map.attributionControl);
 
       // Добавляем изображение
-      var imageUrl = 'map.svg';
-      var imageBounds = [[0, 0], [1000, 1000]]; // Замените 1000 на размеры вашего изображения
-      L.imageOverlay(imageUrl, imageBounds).addTo(map);
+      const isDarkModeEnabled = localStorage.getItem(darkModeKey) === "true";
+      if (isDarkModeEnabled) {
+        themeBtn.classList.add("moon");
+        currentOverlay = L.imageOverlay('./dark_map.svg', imageBounds).addTo(map);
+        enableDarkMode();
+      } else {
+        themeBtn.classList.add("sun");
+        currentOverlay = L.imageOverlay('./map.svg', imageBounds).addTo(map);
+        disableDarkMode();
+      }
 
       var originalIconSize = 50; // Оригинальный размер иконки
 

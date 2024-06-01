@@ -7,7 +7,7 @@
   <meta content="Train line map of SnackSMP" property="og:description"/>
   <link rel="icon" type="image/png" href="icon.jpg">
   <meta property="og:url" content="https://lemon4ik6484.github.io/Train-Map/"/>
-  <meta property="og:image" content="https://lemon4ik6484.github.io/Train-Map/preview.png"/>
+  <meta property="og:image" content="https://lemon4ik6484.github.io/Train-Map/preview.png?v=2"/>
   <meta content="#fcfaf3" data-react-helmet="true" name="theme-color"/>
   <title>Train Map</title>
 
@@ -144,9 +144,9 @@
     }
 
     .L6_Glow {
-      box-shadow: 0 0 5px 5px #81fc95;
+      box-shadow: 0 0 5px 5px #43d95b;
       border-radius: 50%;
-      background-color: rgba(129, 252, 149, 0.25);
+      background-color: rgba(67, 217, 91, 0.25);
     }
 
     .L8_Glow {
@@ -168,9 +168,9 @@
     }
 
     .R14_Glow {
-      box-shadow: 0 0 5px 5px #8b7fe9;
+      box-shadow: 0 0 5px 5px #58c4ff;
       border-radius: 50%;
-      background-color: rgba(139, 127, 233, 0.25);
+      background-color: rgba(88, 196, 255, 0.25);
     }
 
     .L21_Glow {
@@ -572,6 +572,22 @@
         });
       };
 
+      function createRectLineIcon(size) {
+        return L.icon({
+          iconUrl: 'empty.png',
+          iconSize: [size, size],
+          className: 'icon'
+        });
+      };
+
+      function createCircLineIcon(size) {
+        return L.icon({
+          iconUrl: 'empty.png',
+          iconSize: [size, size],
+          className: 'icon'
+        });
+      };
+
       riverantMarker = L.marker([537, 545], {icon: createThreeIcon(originalIconSize)}).addTo(map)
         .bindPopup('Riverant')
         .openPopup();
@@ -657,6 +673,128 @@
         .bindPopup('End Portal')
         .openPopup();
 
+      // Line Buttons
+
+      L22oneMarker = L.marker([925, 798.25], {icon: createRectLineIcon(originalIconSize)}).addTo(map);
+      L22oneMarker.on('click', function(){
+        toggleOverlay("L22");
+      });
+
+      L22twoMarker = L.marker([858, 798.25], {icon: createRectLineIcon(originalIconSize)}).addTo(map);
+      L22twoMarker.on('click', function(){
+        toggleOverlay("L22");
+      });
+
+      L21oneMarker = L.marker([893, 560], {icon: createRectLineIcon(originalIconSize)}).addTo(map);
+      L21oneMarker.on('click', function(){
+        toggleOverlay("L21");
+      });
+
+      L21twoMarker = L.marker([858, 763.25], {icon: createRectLineIcon(originalIconSize)}).addTo(map);
+      L21twoMarker.on('click', function(){
+        toggleOverlay("L21");
+      });
+
+      L1oneMarker = L.marker([858, 728.25], {icon: createRectLineIcon(originalIconSize)}).addTo(map);
+      L1oneMarker.on('click', function(){
+        toggleOverlay("L1");
+      });
+
+      AoneMarker = L.marker([858, 693.25], {icon: createCircLineIcon(originalIconSize)}).addTo(map);
+      AoneMarker.on('click', function(){
+        toggleOverlay("A");
+      });
+
+      L2oneMarker = L.marker([736.75, 381.75], {icon: createRectLineIcon(originalIconSize)}).addTo(map);
+      L2oneMarker.on('click', function(){
+        toggleOverlay("L2");
+      });
+
+      BoneMarker = L.marker([608, 900], {icon: createCircLineIcon(originalIconSize)}).addTo(map);
+      BoneMarker.on('click', function(){
+        toggleOverlay("B");
+      });
+
+      AtwoMarker = L.marker([558, 725], {icon: createCircLineIcon(originalIconSize)}).addTo(map);
+      AtwoMarker.on('click', function(){
+        toggleOverlay("A");
+      });
+
+      BtwoMarker = L.marker([558, 760], {icon: createCircLineIcon(originalIconSize)}).addTo(map);
+      BtwoMarker.on('click', function(){
+        toggleOverlay("B");
+      });
+
+      L2twoMarker = L.marker([558, 795], {icon: createRectLineIcon(originalIconSize)}).addTo(map);
+      L2twoMarker.on('click', function(){
+        toggleOverlay("L2");
+      });
+
+      L1twoMarker = L.marker([508, 593], {icon: createRectLineIcon(originalIconSize)}).addTo(map);
+      L1twoMarker.on('click', function(){
+        toggleOverlay("L1");
+      });
+
+      L6oneMarker = L.marker([508, 628], {icon: createRectLineIcon(originalIconSize)}).addTo(map);
+      L6oneMarker.on('click', function(){
+        toggleOverlay("L6");
+      });
+
+      L23oneMarker = L.marker([508, 663], {icon: createRectLineIcon(originalIconSize)}).addTo(map);
+      L23oneMarker.on('click', function(){
+        toggleOverlay("L23");
+      });
+
+      L8oneMarker = L.marker([381.5, 575], {icon: createRectLineIcon(originalIconSize)}).addTo(map);
+      L8oneMarker.on('click', function(){
+        toggleOverlay("L8");
+      });
+
+      L23twoMarker = L.marker([381.5, 610], {icon: createRectLineIcon(originalIconSize)}).addTo(map);
+      L23twoMarker.on('click', function(){
+        toggleOverlay("L23");
+      });
+
+      L6twoMarker = L.marker([275, 148.5], {icon: createRectLineIcon(originalIconSize)}).addTo(map);
+      L6twoMarker.on('click', function(){
+        toggleOverlay("L6");
+      });
+
+      R13oneMarker = L.marker([275, 183.5], {icon: createRectLineIcon(originalIconSize)}).addTo(map);
+      R13oneMarker.on('click', function(){
+        toggleOverlay("R13`");
+      });
+
+      R14oneMarker = L.marker([275, 218], {icon: createRectLineIcon(originalIconSize)}).addTo(map);
+      R14oneMarker.on('click', function(){
+        toggleOverlay("R14");
+      });
+
+      R12oneMarker = L.marker([242, 477], {icon: createRectLineIcon(originalIconSize)}).addTo(map);
+      R12oneMarker.on('click', function(){
+        toggleOverlay("R12");
+      });
+
+      R13twoMarker = L.marker([242, 512], {icon: createRectLineIcon(originalIconSize)}).addTo(map);
+      R13twoMarker.on('click', function(){
+        toggleOverlay("R13");
+      });
+
+      L8twoMarker = L.marker([183, 140], {icon: createRectLineIcon(originalIconSize)}).addTo(map);
+      L8twoMarker.on('click', function(){
+        toggleOverlay("L8");
+      });
+
+      R12twoMarker = L.marker([100, 197], {icon: createRectLineIcon(originalIconSize)}).addTo(map);
+      R12twoMarker.on('click', function(){
+        toggleOverlay("R12");
+      });
+
+      R14twoMarker = L.marker([83, 493], {icon: createRectLineIcon(originalIconSize)}).addTo(map);
+      R14twoMarker.on('click', function(){
+        toggleOverlay("R14");
+      });
+
       // Устанавливаем область видимости карты
       map.fitBounds(imageBounds);
 
@@ -672,6 +810,7 @@
         var newThreeSize;
         var newFourSize;
         var newTwoSizeSmall;
+        var newLineSize;
         elements.forEach(function(element) {
           element.style.display = '';
         });
@@ -690,6 +829,8 @@
           newTwoSizeSmall = 40
           newThreeSize = 50
           newFourSize = 54
+                    
+          newLineSize = 105;
         } else if (currentZoom === 1) {
           newOneSize = 26.5
           newOneSizeEnd = 33
@@ -697,6 +838,8 @@
           newTwoSizeSmall = 20
           newThreeSize = 25
           newFourSize = 27
+
+          newLineSize = 50;
         } else if (currentZoom === 0) {
           newOneSize = 12
           newOneSizeEnd = 15
@@ -704,6 +847,8 @@
           newTwoSizeSmall = 10
           newThreeSize = 12
           newFourSize = 14
+
+          newLineSize = 25;
         } else if (currentZoom === -1) { //limit
           newOneSize = 6.5
           newOneSizeEnd = 7
@@ -711,6 +856,8 @@
           newTwoSizeSmall = 5
           newThreeSize = 6.5
           newFourSize = 6.5
+
+          newLineSize = 13;
         } else if (currentZoom === -2) {
           newOneSize = 4
           newOneSizeEnd = 5
@@ -776,6 +923,44 @@
         L.DomUtil.addClass(southernCrossMarker._icon, 'oneWay L8');
         L.DomUtil.addClass(rybnikMarker._icon, 'oneWay L8');
         L.DomUtil.addClass(endPortalMarker._icon, 'oneWay L8');
+
+        // Line icons
+
+        L22oneMarker.setIcon(createRectLineIcon(newLineSize));
+        L22twoMarker.setIcon(createRectLineIcon(newLineSize));
+
+        L21oneMarker.setIcon(createRectLineIcon(newLineSize));
+        L21twoMarker.setIcon(createRectLineIcon(newLineSize));
+
+        L1oneMarker.setIcon(createRectLineIcon(newLineSize));
+        L1twoMarker.setIcon(createRectLineIcon(newLineSize));
+
+        AoneMarker.setIcon(createCircLineIcon(newLineSize+5));
+        AtwoMarker.setIcon(createCircLineIcon(newLineSize+5));
+
+        L2oneMarker.setIcon(createRectLineIcon(newLineSize));
+        L2twoMarker.setIcon(createRectLineIcon(newLineSize));
+
+        BoneMarker.setIcon(createCircLineIcon(newLineSize+5));
+        BtwoMarker.setIcon(createCircLineIcon(newLineSize+5));
+
+        L6oneMarker.setIcon(createRectLineIcon(newLineSize));
+        L6twoMarker.setIcon(createRectLineIcon(newLineSize));
+
+        L23oneMarker.setIcon(createRectLineIcon(newLineSize));
+        L23twoMarker.setIcon(createRectLineIcon(newLineSize));
+
+        L8oneMarker.setIcon(createRectLineIcon(newLineSize));
+        L8twoMarker.setIcon(createRectLineIcon(newLineSize));
+
+        R13oneMarker.setIcon(createRectLineIcon(newLineSize));
+        R13twoMarker.setIcon(createRectLineIcon(newLineSize));
+        
+        R14oneMarker.setIcon(createRectLineIcon(newLineSize));
+        R14twoMarker.setIcon(createRectLineIcon(newLineSize));
+
+        R12oneMarker.setIcon(createRectLineIcon(newLineSize));
+        R12twoMarker.setIcon(createRectLineIcon(newLineSize));
 
         var classes = document.getElementById('overlay').classList;
         var lineToAdd = classes.length > 1 ? classes[1] : null;

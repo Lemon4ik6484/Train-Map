@@ -34,6 +34,18 @@ def change_stroke_color(svg_file, original_color, new_color, new_svg_file):
     
     tree.write(new_svg_file)
 
+def change_rect_fill_color(svg_file, original_color, new_color, new_svg_file):
+    tree = ET.parse(svg_file)
+    root = tree.getroot()
+    
+    # Find all rectangles in the SVG file
+    for rect in root.iter('{http://www.w3.org/2000/svg}rect'):
+        # Check if the rectangle has the specified stroke color
+        if rect.get('fill') == original_color:
+            rect.set('fill', new_color)
+    
+    tree.write(new_svg_file)
+
 # Использование функции
 input_one = './legend_bottom.svg'
 old_color = '#FCFAF3'
@@ -57,10 +69,24 @@ new_color = '#FFFFFF'
 change_svg_path_color(input_one, result_one, old_color, new_color)
 
 input_one = f'{pathlib.Path(__file__).parent.resolve()}\\output.svg'
-result_one = './legend_bottom_dark.svg'
+result_one = f'{pathlib.Path(__file__).parent.resolve()}\\output.svg'
 old_color = '#6D6B65'
 new_color = '#FFFFFF'
 
 change_svg_path_color(input_one, result_one, old_color, new_color)
+
+input_one = f'{pathlib.Path(__file__).parent.resolve()}\\output.svg'
+old_color = 'white'
+new_color = '#161F37'
+result_one = f'{pathlib.Path(__file__).parent.resolve()}\\output.svg'
+
+change_rect_fill_color(input_one, old_color, new_color, result_one)
+
+input_one = f'{pathlib.Path(__file__).parent.resolve()}\\output.svg'
+old_color = '#E0DDD0'
+new_color = '#55648E'
+result_one = './legend_bottom_dark.svg'
+
+change_stroke_color(input_one, old_color, new_color, result_one)
 
 os.remove(f"{pathlib.Path(__file__).parent.resolve()}\\output.svg")

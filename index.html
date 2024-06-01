@@ -340,6 +340,9 @@
       top: 1%;
       right: 1%;
       z-index: 1500;
+      padding: 0;
+      background: none;
+      border: none;
     }
 
     #map {
@@ -354,11 +357,11 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
-  <div id="theme_button" class="theme_btn">
-    <svg width="75">
-      <image id="theme_img" href="./sun.svg" wigth="50%" height="50%"/>
+  <button id="theme_button" class="theme_btn">
+    <svg width="65" height="65">
+      <image id="theme_img" href="./sun.svg" wigth="100%" height="100%"/>
     </svg>
-  </div>
+  </button>
   <div id="map"></div>
 
   <a href="https://sites.google.com/view/sb-ctd/home" target="_blank">

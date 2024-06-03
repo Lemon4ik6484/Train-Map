@@ -191,6 +191,162 @@
       background-color: rgba(95, 129, 153, 0.25);
     }
 
+    .A_Glow.dark {
+      box-shadow: 0 0 5px 5px #ff7575bf;
+      border-radius: 50%;
+      background-color: rgba(255, 117, 117, 0.25);
+    }
+
+    .B_Glow.dark {
+      box-shadow: 0 0 5px 5px #ff8bfabf;
+      border-radius: 50%;
+      background-color: rgba(255, 139, 250, 0.25);
+    }
+
+    .L1_Glow.dark {
+      box-shadow: 0 0 5px 5px #58c4ffbf;
+      border-radius: 50%;
+      background-color: rgba(88, 196, 255, 0.25);
+    }
+
+    .L2_Glow.dark {
+      box-shadow: 0 0 5px 5px #ff8bfabf;
+      border-radius: 50%;
+      background-color: rgba(255, 139, 250, 0.25);
+    }
+
+    .L6_Glow.dark {
+      box-shadow: 0 0 5px 5px #43d95bbf;
+      border-radius: 50%;
+      background-color: rgba(67, 217, 91, 0.25);
+    }
+
+    .L8_Glow.dark {
+      box-shadow: 0 0 5px 5px #8d7ee8bf;
+      border-radius: 50%;
+      background-color: rgba(141, 126, 232, 0.25);
+    }
+
+    .R12_Glow.dark {
+      box-shadow: 0 0 5px 5px #ffc52abf;
+      border-radius: 50%;
+      background-color: rgba(255, 197, 42, 0.25);
+    }
+
+    .R13_Glow.dark {
+      box-shadow: 0 0 5px 5px #ff8bfabf;
+      border-radius: 50%;
+      background-color: rgba(255, 139, 250, 0.25);
+    }
+
+    .R14_Glow.dark {
+      box-shadow: 0 0 5px 5px #58c4ffbf;
+      border-radius: 50%;
+      background-color: rgba(88, 196, 255, 0.25);
+    }
+
+    .L21_Glow.dark {
+      box-shadow: 0 0 5px 5px #5f8199bf;
+      border-radius: 50%;
+      background-color: rgba(95, 129, 153, 0.25);
+    }
+
+    .L22_Glow.dark {
+      box-shadow: 0 0 5px 5px #819db2bf;
+      border-radius: 50%;
+      background-color: rgba(129, 157, 178, 0.25);
+    }
+
+    .L23_Glow.dark {
+      box-shadow: 0 0 5px 5px #5f8199bf;
+      border-radius: 50%;
+      background-color: rgba(95, 129, 153, 0.25);
+    }
+
+    .line.A_Glow {
+      box-shadow: none;
+      background-color: rgba(0, 0, 0, 0);
+      border-radius: 0;
+      filter: drop-shadow(0 0 10px #ff7575);
+    }
+
+    .line.B_Glow {
+      box-shadow: none;
+      background-color: rgba(0, 0, 0, 0);
+      border-radius: 0;
+      filter: drop-shadow(0 0 10px #ff8bfa);
+    }
+
+    .line.L1_Glow {
+      box-shadow: none;
+      background-color: rgba(0, 0, 0, 0);
+      border-radius: 0;
+      filter: drop-shadow(0 0 10px #58c4ff);
+    }
+
+    .line.L2_Glow {
+      box-shadow: none;
+      background-color: rgba(0, 0, 0, 0);
+      border-radius: 0;
+      filter: drop-shadow(0 0 10px #ff8bfa);
+    }
+
+    .line.L6_Glow {
+      box-shadow: none;
+      background-color: rgba(0, 0, 0, 0);
+      border-radius: 0;
+      filter: drop-shadow(0 0 10px #43d95b);
+    }
+
+    .line.L8_Glow {
+      box-shadow: none;
+      background-color: rgba(0, 0, 0, 0);
+      border-radius: 0;
+      filter: drop-shadow(0 0 10px #8d7ee8);
+    }
+
+    .line.R12_Glow {
+      box-shadow: none;
+      background-color: rgba(0, 0, 0, 0);
+      border-radius: 0;
+      filter: drop-shadow(0 0 10px #ffc52a);
+    }
+
+    .line.R13_Glow {
+      box-shadow: none;
+      background-color: rgba(0, 0, 0, 0);
+      border-radius: 0;
+      filter: drop-shadow(0 0 10px #ff8bfa);
+    }
+
+    .line.R14_Glow {
+      box-shadow: none;
+      background-color: rgba(0, 0, 0, 0);
+      border-radius: 0;
+      filter: drop-shadow(0 0 10px #58c4ff);
+    }
+
+    .line.L21_Glow {
+      box-shadow: none;
+      background-color: rgba(0, 0, 0, 0);
+      border-radius: 0;
+      filter: drop-shadow(0 0 10px #5f8199);
+    }
+
+    .line.L22_Glow {
+      box-shadow: none;
+      background-color: rgba(0, 0, 0, 0);
+      border-radius: 0;
+      filter: drop-shadow(0 0 10px #819db2);
+    }
+
+    .line.L23_Glow {
+      box-shadow: none;
+      background-color: rgba(0, 0, 0, 0);
+      border-radius: 0;
+      filter: drop-shadow(0 0 10px #5f8199);
+    }
+
     #A_btn {
       position: absolute; 
       top: 19.5%; 
@@ -352,6 +508,10 @@
       user-select: none;          /* Non-prefixed version, currently supported by most browsers */
     }
 
+    .main_map {
+      z-index: 1000 !important;
+    }
+
   </style>
   <!-- Подключаем Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -406,7 +566,10 @@
       localStorage.setItem(darkModeKey, "true");
 
       map.removeLayer(currentOverlay);
-      currentOverlay = L.imageOverlay("./dark_map.svg", imageBounds).addTo(map);
+      currentOverlay = L.imageOverlay("./dark_map.svg", imageBounds, {
+        className: "main_map",
+        attribution: '<a href="https://github.com/Lemon4ik6484">Lemonnik6484</a> | Tomzitiger'
+      }).addTo(map);
 
       document.getElementById("logo_img").setAttribute('href', "./logo_dark.svg");
       document.getElementById("legend_bottom_img").setAttribute('href', "./legend_bottom_dark.svg");
@@ -420,7 +583,10 @@
       localStorage.setItem(darkModeKey, "false");
 
       map.removeLayer(currentOverlay);
-      currentOverlay = L.imageOverlay("./map.svg", imageBounds).addTo(map);
+      currentOverlay = L.imageOverlay("./map.svg", imageBounds, {
+        className: "main_map",
+        attribution: '<a href="https://github.com/Lemon4ik6484">Lemonnik6484</a> | Tomzitiger'
+      }).addTo(map);
 
       document.getElementById("logo_img").setAttribute('href', "./logo.svg");
       document.getElementById("legend_bottom_img").setAttribute('href', "./legend_bottom.svg");
@@ -428,12 +594,30 @@
       document.getElementById("theme_img").setAttribute('href', "./sun.svg");
     };
 
+    function addStationDarkClass() {
+
+      var elements = document.querySelectorAll('.icon');
+
+      elements.forEach(function(element) {
+        element.classList.add('dark');
+      });
+    }
+
+    function removeStationDarkClass() {
+      var stations = document.querySelectorAll('.icon');
+      stations.forEach(function(station){
+        station.classList.remove('dark');
+      });
+    }
+
     themeBtn.onclick = () => {
       themeBtn.classList.toggle("moon");
       if (themeBtn.classList.contains("moon")) {
         enableDarkMode();
+        addStationDarkClass();
       } else {
         disableDarkMode();
+        removeStationDarkClass();
       }
     };
 
@@ -441,7 +625,7 @@
       var glowClass = line + '_Glow';
 
       if (line_glows.includes(glowClass)) {
-        var elements = document.querySelectorAll('.icon.' + line);
+        var elements = document.querySelectorAll('.icon.' + line + ', .line.' + line );
 
         elements.forEach(function(element) {
           element.classList.add(glowClass);
@@ -452,7 +636,7 @@
 
 
     function remove_glow() {
-      var stations = document.querySelectorAll('.icon');
+      var stations = document.querySelectorAll('.icon, .line');
       stations.forEach(function(station){
         for (let line of line_glows) {
           if (station.classList.contains(line)) {
@@ -528,6 +712,90 @@
         maxZoom: 2 // Устанавливаем максимальное значение зума
       });
 
+      function loadSVG(url) {
+            return fetch(url)
+                .then(response => response.text())
+                .then(svgText => {
+                    var parser = new DOMParser();
+                    var svgDoc = parser.parseFromString(svgText, 'image/svg+xml');
+                    return svgDoc.documentElement;
+                });
+        }
+
+        loadSVG('lines/A.svg').then(svgElement => {
+            var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
+              className: "line A"
+            }).addTo(map);
+        });
+
+        loadSVG('lines/B.svg').then(svgElement => {
+            var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
+              className: "line B"
+            }).addTo(map);
+        });
+
+        loadSVG('lines/L1.svg').then(svgElement => {
+            var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
+              className: "line L1"
+            }).addTo(map);
+        });
+
+        loadSVG('lines/L2.svg').then(svgElement => {
+            var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
+              className: "line L2"
+            }).addTo(map);
+        });
+
+        loadSVG('lines/L6.svg').then(svgElement => {
+            var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
+              className: "line L6"
+            }).addTo(map);
+        });
+
+        loadSVG('lines/L8.svg').then(svgElement => {
+            var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
+              className: "line L8"
+            }).addTo(map);
+        });
+
+        loadSVG('lines/R12.svg').then(svgElement => {
+            var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
+              className: "line R12"
+            }).addTo(map);
+        });
+
+        loadSVG('lines/R13.svg').then(svgElement => {
+            var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
+              className: "line R13"
+            }).addTo(map);
+        });
+
+        loadSVG('lines/R14.svg').then(svgElement => {
+            var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
+              className: "line R14"
+            }).addTo(map);
+        });
+
+        loadSVG('lines/L21.svg').then(svgElement => {
+            var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
+              className: "line L21"
+            }).addTo(map);
+        });
+
+        loadSVG('lines/L22.svg').then(svgElement => {
+            var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
+              className: "line L22"
+            }).addTo(map);
+        });
+
+        loadSVG('lines/L23.svg').then(svgElement => {
+            var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
+              className: "line L23"
+            }).addTo(map);
+        });
+
+      var additionalTileLayer = L.tileLayer('map.svg');
+
       // Удаляем ненужные элементы управления
       map.removeControl(map.zoomControl);
       //map.removeControl(map.attributionControl);
@@ -536,12 +804,14 @@
       const isDarkModeEnabled = localStorage.getItem(darkModeKey) === "true";
       if (isDarkModeEnabled) {
         themeBtn.classList.add("moon");
-        currentOverlay = L.imageOverlay('./dark_map.svg', imageBounds).addTo(map);
+        currentOverlay = L.imageOverlay('./dark_map.svg', imageBounds, {attribution: '<a href="https://github.com/Lemon4ik6484">Lemonnik6484</a> | Tomzitiger'}).addTo(map);
         enableDarkMode();
+        addStationDarkClass();
       } else {
         themeBtn.classList.add("sun");
-        currentOverlay = L.imageOverlay('./map.svg', imageBounds).addTo(map);
+        currentOverlay = L.imageOverlay('./map.svg', imageBounds, {attribution: '<a href="https://github.com/Lemon4ik6484">Lemonnik6484</a> | Tomzitiger'}).addTo(map);
         disableDarkMode();
+        removeStationDarkClass();
       }
 
       var originalIconSize = 50; // Оригинальный размер иконки
@@ -967,9 +1237,17 @@
 
         var classes = document.getElementById('overlay').classList;
         var lineToAdd = classes.length > 1 ? classes[1] : null;
-        
+      
+        var darkMode = document.body.classList.contains('darkMode');
+
         if (lineToAdd) {
           add_glow(lineToAdd);
+        }
+
+        if (darkMode) {
+          addStationDarkClass();
+        } else {
+          removeStationDarkClass();
         }
       }      
 

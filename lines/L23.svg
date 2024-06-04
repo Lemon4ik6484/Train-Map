@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M327 354V278" stroke="#5F8098" stroke-width="3"/>
+  <rect x="312.5" y="274.5" width="29" height="7" rx="3.5" fill="#8A8A8A" stroke="#56544D"/>
+  <rect x="331.5" y="350.5" width="7" height="19" rx="3.5" transform="matrix(0, 1, -1, 0, 682, 18.999999999999993)" fill="#8A8A8A" stroke="#56544D"/>
 </svg>

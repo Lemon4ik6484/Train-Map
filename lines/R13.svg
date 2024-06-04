@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M181 418V459C181 461.209 182.791 463 185 463H253C255.209 463 257 461.209 257 459V438" stroke="#FF8AFA" stroke-width="3" stroke-dasharray="10 1"/>
+  <rect x="146.5" y="414.5" width="39" height="7" rx="3.5" fill="#8A8A8A" stroke="#56544D"/>
+  <rect x="252.5" y="434.5" width="19" height="7" rx="3.5" fill="#8A8A8A" stroke="#56544D"/>
 </svg>

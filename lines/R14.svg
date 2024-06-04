@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M276 533H175C172.791 533 171 531.209 171 529V418" stroke="#59C3FF" stroke-width="3" stroke-dasharray="10 1"/>
+  <rect x="166.5" y="493.5" width="19" height="7" rx="3.5" fill="#8A8A8A" stroke="#56544D"/>
+  <rect x="146.5" y="414.5" width="39" height="7" rx="3.5" fill="#8A8A8A" stroke="#56544D"/>
+  <rect x="217.5" y="529.5" width="7" height="7" rx="3.5" transform="matrix(0, 1, -1, 0, 747, 311.99999999999994)" fill="#8A8A8A" stroke="#56544D"/>
+  <rect x="251.5" y="529.5" width="7" height="7" rx="3.5" transform="matrix(0, 1, -1, 0, 781, 277.99999999999994)" fill="#8A8A8A" stroke="#56544D"/>
+  <rect x="281.5" y="528.5" width="9" height="9" rx="4.5" transform="matrix(0, 1, -1, 0, 810, 246.99999999999997)" fill="#8A8A8A" stroke="#56544D"/>
 </svg>

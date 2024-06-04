@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M103.5 473H157C159.209 473 161 471.209 161 469V332C161 329.791 162.791 328 165 328H313C315.209 328 317 329.791 317 332V354" stroke="#8D7EE8" stroke-width="3"/>
+  <rect x="146.5" y="414.5" width="39" height="7" rx="3.5" fill="#8A8A8A" stroke="#56544D"/>
+  <rect x="147.5" y="379.5" width="17" height="7" rx="3.5" fill="#8A8A8A" stroke="#56544D"/>
+  <rect x="147.5" y="344.5" width="17" height="7" rx="3.5" fill="#8A8A8A" stroke="#56544D"/>
+  <rect x="331.5" y="350.5" width="7" height="19" rx="3.5" transform="matrix(0, 1, -1, 0, 682, 18.999999999999993)" fill="#8A8A8A" stroke="#56544D"/>
+  <rect x="202.5" y="324.5" width="7" height="7" rx="3.5" transform="matrix(0, 1, -1, 0, 527, 122)" fill="#8A8A8A" stroke="#56544D"/>
+  <rect x="269.5" y="324.5" width="7" height="7" rx="3.5" transform="matrix(0, 1, -1, 0, 594, 54.99999999999999)" fill="#8A8A8A" stroke="#56544D"/>
+  <rect x="107.5" y="468.5" width="9" height="9" rx="4.5" transform="matrix(0, 1, -1, 0, 576, 360.99999999999994)" fill="#8A8A8A" stroke="#56544D"/>
+  <rect x="140.5" y="469.5" width="7" height="7" rx="3.5" transform="matrix(0, 1, -1, 0, 610, 328.99999999999994)" fill="#8A8A8A" stroke="#56544D"/>
 </svg>

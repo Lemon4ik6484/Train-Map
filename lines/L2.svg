@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M407 248V223.799C407 220.086 408.475 216.525 411.101 213.899L422.899 202.101C425.525 199.475 427 195.914 427 192.201V142C427 139.791 425.209 138 423 138H255M255 138H212.5C210.291 138 208.5 139.791 208.5 142V173.5C208.5 175.709 210.291 177.5 212.5 177.5H244C246.209 177.5 248 175.709 248 173.5V145C248 141.134 251.134 138 255 138V138Z" stroke="#FF8AFA" stroke-width="3"/>
+  <rect x="382.5" y="244.5" width="39" height="7" rx="3.5" fill="#8A8A8A" stroke="#56544D"/>
+  <rect x="412.5" y="145.5" width="19" height="7" rx="3.5" fill="#8A8A8A" stroke="#56544D"/>
+  <rect x="423.5" y="176.5" width="7" height="7" rx="3.5" fill="#8A8A8A" stroke="#56544D"/>
+  <rect x="225.5" y="134.5" width="7" height="7" rx="3.5" fill="#8A8A8A" stroke="#56544D"/>
+  <rect x="225.5" y="174.5" width="7" height="7" rx="3.5" fill="#8A8A8A" stroke="#56544D"/>
+  <rect x="311.5" y="134.5" width="7" height="7" rx="3.5" fill="#8A8A8A" stroke="#56544D"/>
 </svg>

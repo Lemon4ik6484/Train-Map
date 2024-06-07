@@ -47,7 +47,7 @@ def change_rect_fill_color(svg_file, original_color, new_color, new_svg_file):
     tree.write(new_svg_file)
 
 # Использование функции
-input_one = './legend_bottom.svg'
+input_one = './map.svg'
 old_color = '#FCFAF3'
 new_color = '#000000'
 result_one = f'{pathlib.Path(__file__).parent.resolve()}\\output.svg'
@@ -85,7 +85,7 @@ change_rect_fill_color(input_one, old_color, new_color, result_one)
 input_one = f'{pathlib.Path(__file__).parent.resolve()}\\output.svg'
 old_color = '#E0DDD0'
 new_color = '#55648E'
-result_one = './legend_bottom_dark.svg'
+result_one = './dark_map.svg'
 
 change_stroke_color(input_one, old_color, new_color, result_one)
 

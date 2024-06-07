@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M377 68V32C377 29.7909 378.791 28 381 28H461" stroke="#809CB1" stroke-width="3"/>
-  <rect x="362.5" y="64.5" width="39" height="7" rx="3.5" fill="#8A8A8A" stroke="#56544D"/>
-  <rect x="456.5" y="23.5" width="9" height="9" rx="4.5" fill="#8A8A8A" stroke="#56544D"/>
+  <path d="M377 68V42C377 39.7909 378.791 38 381 38H491" stroke="#809CB1" stroke-width="3" transform="matrix(1, 0, 0, 1, 0, -2.842170943040401e-14)"/>
+  <rect x="362.5" y="64.5" width="39" height="7" rx="3.5" fill="#8A8A8A" stroke="#56544D" transform="matrix(1, 0, 0, 1, 0, -2.842170943040401e-14)"/>
+  <rect x="425.5" y="34.5" width="7" height="7" rx="3.5" fill="#8A8A8A" stroke="#56544D" transform="matrix(1, 0, 0, 1, 0, -2.842170943040401e-14)"/>
+  <rect x="486.5" y="33.5" width="9" height="9" rx="4.5" fill="#8A8A8A" stroke="#56544D" transform="matrix(1, 0, 0, 1, 0, -2.842170943040401e-14)"/>
 </svg>

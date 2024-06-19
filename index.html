@@ -38,22 +38,22 @@
     }
 
     .logo {
-      position: absolute;
-      top: 0;
-      left: 0;
       margin: 1%;
+      margin-left: 2%;
       max-width: 250px;
+      margin-top: 0;
       height: auto;
     }
 
     .legend {
+      margin: 1%;
+      margin-right: 0;
+      margin-bottom: 0;
+      max-width: 250px;
+      height: auto;
       position: fixed;
       bottom: 0;
       right: 0;
-      margin: 1%;
-      margin-right: 0;
-      max-width: 250px;
-      height: auto;
     }
 
     @media (max-width: 600px) {
@@ -76,10 +76,6 @@
 
     .logo, .legend {
       z-index: 1500;
-    }
-
-    .logo {
-      margin: 1%;
     }
 
     .legend {
@@ -312,13 +308,11 @@
     }
 
     .theme_btn{
-      position: fixed;
-      top: 1%;
-      right: 1%;
       z-index: 1500;
       padding: 0;
       background: none;
       border: none;
+      margin-right: 1%;
     }
 
     #map {
@@ -332,23 +326,191 @@
       z-index: 1000 !important;
     }
 
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      align-content: stretch;
+      background: none;
+      z-index: 1500;
+    }
+
+    .route {
+      filter: brightness(150%);
+    }
+
+    #menu1 {
+      background-color: #ffffff;
+      border: 1px solid #e0ddd0;
+      border-radius: 5px;
+      height: 7%;
+      width: auto;
+      font-size: 100%;
+      text-align: center;
+      color: #6d6b65;
+      cursor: pointer;
+    }
+
+    #menu2 {
+      background-color: #ffffff;
+      border: 1px solid #e0ddd0;
+      border-radius: 5px;
+      height: 7%;
+      width: auto;
+      font-size: 100%;
+      text-align: center;
+      color: #6d6b65;
+      cursor: pointer;
+    }
+
+    #searchBtn {
+      background-color: #ffffff;
+      border: 1px solid #e0ddd0;
+      border-radius: 5px;
+      height: 100%;
+      width: 6%;
+      color: #6d6b65;
+      cursor: pointer;
+    }
+
+    #menu1.darkMode {
+      background-color: #161f37 !important;
+      border-color: #55648e;
+      color: #ffffff;
+    }
+
+    #menu2.darkMode {
+      background-color: #161f37 !important;
+      border-color: #55648e;
+      color: #ffffff;
+    }
+
+    #searchBtn.darkMode {
+      background-color: #161f37 !important;
+      border-color: #55648e;
+      color: #ffffff;
+    }
+
+    #searchIcon {
+      fill: #6d6b65;
+    }
+
+    #searchIcon.darkMode {
+      fill: #ffffff;
+    }
+
+    .route {
+      filter: drop-shadow(0 0 10px #000000);
+      z-index: 1500 !important;
+    }
+
+    .route.darkMode {
+      background: none !important;
+      filter: drop-shadow(0 0 10px #ffffff) !important;
+    }
+
   </style>
   <!-- Подключаем Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
-  <button id="theme_button" class="theme_btn">
-    <svg width="65" height="65">
-      <image id="theme_img" href="./sun.svg" wigth="100%" height="100%"/>
-    </svg>
-  </button>
-  <div id="map"></div>
+  <header>
+    <a href="https://sites.google.com/view/sb-ctd/associates/central-rail" target="_blank">
+      <svg class="logo ui" width="589.5" height="222">
+        <image id="logo_img" href="logo.svg" width="100%" height="100%"/>
+      </svg>
+    </a>
 
-  <a href="https://sites.google.com/view/sb-ctd/associates/central-rail" target="_blank">
-    <svg class="logo ui" width="589.5" height="222">
-      <image id="logo_img" href="logo.svg" width="100%" height="100%"/>
-    </svg>
-  </a>
+    <div class="routeMenu">
+      <select id="menu1" onchange="startStation=this.value">
+        <option value="">Start</option>
+        <option value="birchland">Birchland</option>
+        <option value="blossomingValley">Blossoming Valley</option>
+        <option value="capitalisoria">Capitalisoria</option>
+        <option value="central">Central</option>
+        <option value="cherryville">Cherryville</option>
+        <option value="cheeseland">Cheeseland</option>
+        <option value="communista">Communista</option>
+        <option value="endPortal">End Portal</option>
+        <option value="fortBoreas">Fort Boreas</option>
+        <option value="grimsbyPeaks">Grimsby Peaks</option>
+        <option value="hammerington">Hammerington</option>
+        <option value="jungletownIndustrial">Jungletown Industrial</option>
+        <option value="jungletownTemple">Jungletown Temple</option>
+        <option value="krunkeria">Krunkeria</option>
+        <option value="lyciaBridge">Lycia Bridge</option>
+        <option value="middleseaBeach">Middlesea Beach</option>
+        <option value="neoArcania">Neo Arcania</option>
+        <option value="newIndustria">New Industria</option>
+        <option value="newport">Newport</option>
+        <option value="oakridge">Oakridge</option>
+        <option value="portAndesworth">Port Andesworth</option>
+        <option value="refinery">Refinery</option>
+        <option value="riverant">Riverant</option>
+        <option value="rublenika">Rublenika</option>
+        <option value="rybnik">Rybnik</option>
+        <option value="southernCross">Southern Cross</option>
+        <option value="staraWies">Stara Wies</option>
+        <option value="timberland">Timberland</option>
+        <option value="wompwomp">Womp Womp</option>        
+      </select>
+
+      <select id="menu2" onchange="endStation=this.value">
+        <option value="">Finish</option>
+        <option value="birchland">Birchland</option>
+        <option value="blossomingValley">Blossoming Valley</option>
+        <option value="capitalisoria">Capitalisoria</option>
+        <option value="central">Central</option>
+        <option value="cherryville">Cherryville</option>
+        <option value="cheeseland">Cheeseland</option>
+        <option value="communista">Communista</option>
+        <option value="endPortal">End Portal</option>
+        <option value="fortBoreas">Fort Boreas</option>
+        <option value="grimsbyPeaks">Grimsby Peaks</option>
+        <option value="hammerington">Hammerington</option>
+        <option value="jungletownIndustrial">Jungletown Industrial</option>
+        <option value="jungletownTemple">Jungletown Temple</option>
+        <option value="krunkeria">Krunkeria</option>
+        <option value="lyciaBridge">Lycia Bridge</option>
+        <option value="middleseaBeach">Middlesea Beach</option>
+        <option value="neoArcania">Neo Arcania</option>
+        <option value="newIndustria">New Industria</option>
+        <option value="newport">Newport</option>
+        <option value="oakridge">Oakridge</option>
+        <option value="portAndesworth">Port Andesworth</option>
+        <option value="refinery">Refinery</option>
+        <option value="riverant">Riverant</option>
+        <option value="rublenika">Rublenika</option>
+        <option value="rybnik">Rybnik</option>
+        <option value="southernCross">Southern Cross</option>
+        <option value="staraWies">Stara Wies</option>
+        <option value="timberland">Timberland</option>
+        <option value="wompwomp">Womp Womp</option>
+        
+      </select>
+
+      <button id="searchBtn" onclick="ShortestPath()">
+        <svg style="height:10px;width:10px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <path id="searchIcon" fill="#ffffff" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
+        </svg>
+      </button>
+    </div>
+
+    <button id="theme_button" class="theme_btn">
+      <svg width="65" height="65">
+        <image id="theme_img" href="./sun.svg" wigth="100%" height="100%"/>
+      </svg>
+    </button>
+  </header>
+  
+  <div id="map"></div>
 
   <div class="legend updateIconSizes">
     <svg class="legend_item" width="225" height="106.5">
@@ -377,12 +539,152 @@
   <script>
     line_glows = ["A_Glow", "B_Glow", "L1_Glow", "L2_Glow", "L6_Glow", "L8_Glow", "R12_Glow", "R13_Glow", "R14_Glow", "L21_Glow", "L22_Glow", "L23_Glow"];
     imageBounds = [[0, 0], [1000, 1000]];
+    let startStation = "";
+    let endStation = "";
+    const stations = {
+      "riverant": {
+          "wompwomp": 1,
+          "andesworth": 3,
+          "timberland": 2
+      },
+      "timberland": {
+          "riverant": 1,
+          "middleseaBeach": 2,
+      },
+      "central": {
+          "wompwomp": 1,
+          "krunkeria": 1,
+          "cherryville": 1,
+          "blossomingValley": 2,
+          "lyciaBridge": 1,
+      },
+      "wompwomp": {
+          "central": 1,
+          "riverant": 1
+      },
+      "andesworth": {
+          "riverant": 1,
+          "birchland": 1
+      },
+      "krunkeria": {
+          "central": 1
+      },
+      "cherryville": {
+          "central": 1,
+          "cherryville": 1
+      },
+      "blossomingValley": {
+          "cherryville": 1,
+          "central": 2,
+          "newport": 1,
+          "refinery": 2
+      },
+      "newport": {
+          "blossomingValley": 1,
+          "lyciaBridge": 2
+      },
+      "lyciaBridge": {
+          "newport": 1,
+          "central": 1,
+          "capitalisoria": 1,
+          "rublenika": 1
+      },
+      "capitalisoria": {
+          "lyciaBridge": 1
+      },
+      "rublenika": {
+          "lyciaBridge": 1,
+          "neoArcania": 1
+      },
+      "refinery": {
+          "fortBoreas": 1,
+          "blossomingValley": 2
+      },
+      "fortBoreas": {
+          "hammerington": 1
+      },
+      "hammerington": {
+          "refinery": 1
+      },
+      "middleseaBeach": {
+          "timberland": 2,
+          "southernCross": 1,
+          "jungletownIndustrial": 1
+      },
+      "jungletownIndustrial": {
+          "middleseaBeach": 1,
+          "jungletownTemple": 1
+      },
+      "jungletownTemple": {
+          "jungletownIndustrial": 1,
+          "rybnik": 1,
+          "grimsbyPeaks": 2,
+          "communista": 3
+      },
+      "communista": {
+          "jungletownTemple": 1,
+          "grimsbyPeaks": 1
+      },
+      "grimsbyPeaks": {
+          "jungletownTemple": 2,
+          "communista": 2,
+          "newIndustria": 1,
+          "oakridge": 1
+      },
+      "oakridge": {
+          "grimsbyPeaks": 2,
+          "cheeseland": 1,
+      },
+      "cheeseland": {
+          "oakridge": 1,
+          "staraWies": 1
+      },
+      "staraWies": {
+          "cheeseland": 1
+      },
+      "newIndustria": {
+          "grimsbyPeaks": 1
+      },
+      "birchland": {
+          "andesworth": 1,
+          "southernCross": 1
+      },
+      "southernCross": {
+          "birchland": 1,
+          "middleseaBeach": 1
+      },
+      "rybnik": {
+          "endPortal": 1,
+          "jungletownTemple": 2
+      },
+      "endPortal": {
+          "rybnik": 1
+      },
+      "neoArcania": {
+          "rublenika": 1
+      }
+    };
+    const station_names = [
+    'riverant', 'timberland', 'central', 'wompwomp', 'andesworth', 'krunkeria', 'cherryville', 
+    'blossomingValley', 'newport', 'lyciaBridge', 'capitalisoria', 'rublenika', 'refinery', 
+    'fortBoreas', 'hammerington', 'middleseaBeach', 'jungletownIndustrial', 'jungletownTemple', 
+    'communista', 'grimsbyPeaks', 'oakridge', 'cheeseland', 'staraWies', 'newIndustria', 
+    'birchland', 'southernCross', 'rybnik', 'endPortal', 'neoArcania'
+    ];
+    const lines = [
+    'A', 'B', 'L1', 'L2', 'L6', 'L8', 'R12', 'R13', 'R14', 'L21', 'L22', 'L23'
+    ];
     const themeBtn = document.getElementById("theme_button");
     const darkModeKey = "TrainMapDarkMode";
 
     const enableDarkMode = () => {
       document.body.classList.add("darkMode");
       document.getElementById("map").classList.add("darkMode");
+      document.getElementById("menu1").classList.add("darkMode");
+      document.getElementById("menu2").classList.add("darkMode");
+      document.getElementById("searchBtn").classList.add("darkMode");
+      document.getElementById("searchIcon").classList.add("darkMode");
+      Array.from(document.getElementsByClassName("station")).forEach((station) => station.classList.add("darkMode"));
       localStorage.setItem(darkModeKey, "true");
 
       map.removeLayer(currentOverlay);
@@ -400,6 +702,11 @@
     const disableDarkMode = () => {
       document.body.classList.remove("darkMode");
       document.getElementById("map").classList.remove("darkMode");
+      document.getElementById("menu1").classList.remove("darkMode");
+      document.getElementById("menu2").classList.remove("darkMode");
+      document.getElementById("searchBtn").classList.remove("darkMode");
+      document.getElementById("searchIcon").classList.remove("darkMode");
+      Array.from(document.getElementsByClassName("station")).forEach((station) => station.classList.remove("darkMode"));
       localStorage.setItem(darkModeKey, "false");
 
       map.removeLayer(currentOverlay);
@@ -490,31 +797,7 @@
         overlay.classList.toggle('overlay-active');
       }
 
-      if (line === 'L1') {
-        overlay.classList.toggle('L1');
-      } else if (line === 'L2') {
-        overlay.classList.toggle('L2');
-      } else if (line === 'L6') {
-        overlay.classList.toggle('L6');
-      } else if (line === 'L8') {
-        overlay.classList.toggle('L8');
-      } else if (line === 'R12') {
-        overlay.classList.toggle('R12');
-      } else if (line === 'R13') {
-        overlay.classList.toggle('R13');
-      } else if (line === 'R14') {
-        overlay.classList.toggle('R14');
-      } else if (line === 'L21') {
-        overlay.classList.toggle('L21');
-      } else if (line === 'L22') {
-        overlay.classList.toggle('L22');
-      } else if (line === 'L23') {
-        overlay.classList.toggle('L23');
-      } else if (line === 'A') {
-        overlay.classList.toggle('A');
-      } else if (line === 'B') {
-        overlay.classList.toggle('B');
-      }
+      overlay.classList.toggle(line);
 
       var map = document.getElementById('map');
       if (document.getElementById('overlay').classList.contains('overlay-active')) {
@@ -542,83 +825,26 @@
                 });
         }
 
-        loadSVG('lines/A.svg').then(svgElement => {
-            var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
-              className: "line A"
-            }).addTo(map);
+        lines.forEach(line => {
+            loadSVG(`lines/${line}.svg`).then(svgElement => {
+                var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
+                    className: `line ${line}`
+                }).addTo(map);
+            });
         });
 
-        loadSVG('lines/B.svg').then(svgElement => {
-            var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
-              className: "line B"
-            }).addTo(map);
-        });
-
-        loadSVG('lines/L1.svg').then(svgElement => {
-            var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
-              className: "line L1"
-            }).addTo(map);
-        });
-
-        loadSVG('lines/L2.svg').then(svgElement => {
-            var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
-              className: "line L2"
-            }).addTo(map);
-        });
-
-        loadSVG('lines/L6.svg').then(svgElement => {
-            var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
-              className: "line L6"
-            }).addTo(map);
-        });
-
-        loadSVG('lines/L8.svg').then(svgElement => {
-            var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
-              className: "line L8"
-            }).addTo(map);
-        });
-
-        loadSVG('lines/R12.svg').then(svgElement => {
-            var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
-              className: "line R12"
-            }).addTo(map);
-        });
-
-        loadSVG('lines/R13.svg').then(svgElement => {
-            var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
-              className: "line R13"
-            }).addTo(map);
-        });
-
-        loadSVG('lines/R14.svg').then(svgElement => {
-            var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
-              className: "line R14"
-            }).addTo(map);
-        });
-
-        loadSVG('lines/L21.svg').then(svgElement => {
-            var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
-              className: "line L21"
-            }).addTo(map);
-        });
-
-        loadSVG('lines/L22.svg').then(svgElement => {
-            var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
-              className: "line L22"
-            }).addTo(map);
-        });
-
-        loadSVG('lines/L23.svg').then(svgElement => {
-            var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
-              className: "line L23"
-            }).addTo(map);
+        station_names.forEach(station => {
+            loadSVG(`stations/${station}.svg`).then(svgElement => {
+                var svgOverlay = L.svgOverlay(svgElement, imageBounds, {
+                    className: `station ${station}`
+                }).addTo(map);
+            });
         });
 
       var additionalTileLayer = L.tileLayer('map.svg');
 
       // Удаляем ненужные элементы управления
       map.removeControl(map.zoomControl);
-      //map.removeControl(map.attributionControl);
 
       // Добавляем изображение
       const isDarkModeEnabled = localStorage.getItem(darkModeKey) === "true";
@@ -766,7 +992,7 @@
         .bindPopup('End Portal')
         .openPopup();
       neoArcaniaMarker = L.marker([936.5, 818.25], {icon: createOneIcon(originalIconSize)}).addTo(map)
-        .bindPopup('End Portal')
+        .bindPopup('Neo Arcania')
         .openPopup();
 
       // Line Buttons
@@ -1020,7 +1246,7 @@
         L.DomUtil.addClass(southernCrossMarker._icon, 'oneWay L8');
         L.DomUtil.addClass(rybnikMarker._icon, 'oneWay L8');
         L.DomUtil.addClass(endPortalMarker._icon, 'oneWay L8');
-        L.DomUtil.addClass(neoArcaniaMarker._icon, 'oneWay L22')
+        L.DomUtil.addClass(neoArcaniaMarker._icon, 'oneWay L22');
 
         // Line icons
 
@@ -1074,6 +1300,51 @@
       // Обновляем размер значков при загрузке страницы
       updateIconSizes();
     };
+
+    function PathFinder(startStation, endStation) {
+    const queue = [{ station: startStation, distance: 0, path: [] }];
+    const visited = new Set();
+
+      while (queue.length > 0) {
+          queue.sort((a, b) => a.distance - b.distance);
+          const { station, distance, path } = queue.shift();
+
+          if (station === endStation) {
+              path.push(station);
+              return {path};
+          }
+
+          if (visited.has(station)) {
+              continue;
+          }
+
+          visited.add(station);
+
+          for (const neighbor in stations[station]) {
+              if (!visited.has(neighbor)) {
+                  const neighborDistance = stations[station][neighbor];
+                  queue.push({
+                      station: neighbor,
+                      distance: distance + neighborDistance,
+                      path: [...path, station]
+                  });
+              }
+          }
+      }
+      return null;
+    }
+
+    function ShortestPath() {
+      console.log(Array.from(document.getElementsByClassName("route")).forEach((station) => station.classList.remove("route")));
+      const result = PathFinder(startStation, endStation);
+      if (result) {
+          console.log(`Route from ${startStation} to ${endStation}:`);
+          result.path.forEach((station) => document.getElementsByClassName(station)[0].classList.add("route"));
+          console.log(result.path.join(' -> '));
+      } else {
+          console.log(`Route from ${startStation} to ${endStation} not found`);
+      }
+    }
   </script>
 
   <!-- Подключаем Leaflet JS -->

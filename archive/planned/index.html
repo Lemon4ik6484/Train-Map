@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Archive | Planned train Map" property="og:title"/>
+    <meta content="Planned train line map of SnackSMP" property="og:description"/>
+    <link rel="icon" type="image/png" href="icon.jpg">
+    <meta property="og:url" content="https://lemon4ik6484.github.io/Train-Map/"/>
+    <meta property="og:image" content="https://lemon4ik6484.github.io/Train-Map/archive/planned/preview.png"/>
+    <meta content="#fcfaf3" data-react-helmet="true" name="theme-color"/>
+    <title>Archive | Planned Train Map</title>
+
+    <link rel="preload" href="map.svg" as="image">
+    <link rel="preload" href="logo.svg" as="image">
+    <link rel="preload" href="legend_up.svg" as="image">
+    <link rel="preload" href="legend_bottom.svg" as="image">
+
+    <link rel="preload" href="map_dark.svg" as="image">
+    <link rel="preload" href="logo_dark.svg" as="image">
+    <link rel="preload" href="legend_up_dark.svg" as="image">
+    <link rel="preload" href="legend_bottom_dark.svg" as="image">
+
+    <link rel="preload" href="sun.svg" as="image">
+    <link rel="preload" href="moon.svg" as="image">
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #map {
+      width: 100vw;
+      height: 100vh;
+      background-color: #fcfaf3;
+      z-index: 0;
+      border: #41da5b;
+    }
+
+    .logo {
+      margin: 1%;
+      margin-left: 2%;
+      max-width: 250px;
+      margin-top: 0;
+      height: auto;
+    }
+
+    .legend {
+      margin: 1%;
+      margin-right: 0;
+      margin-bottom: 0;
+      max-width: 250px;
+      height: auto;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+    }
+
+    @media (max-width: 600px) {
+      .logo, .legend, .theme_btn {
+        max-width: 200px;
+      }
+    }
+
+    @media (min-width: 601px) and (max-width: 1024px) {
+      .logo, .legend, .theme_btn {
+        max-width: 250px;
+      }
+    }
+
+    @media (min-width: 1025px) {
+      .logo, .legend, .theme_btn {
+        max-width: 300px;
+      }
+    }
+
+    .logo, .legend {
+      z-index: 1500;
+    }
+
+    .legend {
+      display: inline-flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: stretch;
+      align-content: stretch;
+      margin: 1%;
+      margin-bottom: 0.5%;
+      margin-right: 0;
+    }
+
+    #map {
+      -webkit-user-select: none;  /* Chrome, Safari, Opera */
+      -moz-user-select: none;     /* Firefox */
+      -ms-user-select: none;      /* Internet Explorer/Edge */
+      user-select: none;          /* Non-prefixed version, currently supported by most browsers */
+    }
+
+    .theme_btn{
+      z-index: 1500;
+      padding: 0;
+      background: none;
+      border: none;
+      margin-right: 1%;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      align-content: stretch;
+      background: none;
+      z-index: 1500;
+    }
+
+    .darkMode {
+      background-color: #080e1e !important;
+    }
+
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    }
+
+    .overlay-active #overlay {
+      display: block;
+    }
+  </style>
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <header>
+        <a href="https://sites.google.com/view/sb-ctd/associates/central-rail" target="_blank">
+          <svg class="logo ui" width="589.5" height="222">
+            <image id="logo_img" href="logo.svg" width="100%" height="100%"/>
+          </svg>
+        </a>
+    
+        <button id="theme_button" class="theme_btn">
+          <svg width="65" height="65">
+            <image id="theme_img" href="./sun.svg" wigth="100%" height="100%"/>
+          </svg>
+        </button>
+      </header>
+
+      <div id="map"></div>
+
+      <div class="legend updateIconSizes">
+        <svg class="legend_item" width="225" height="106.5">
+          <image id="legend_up_img" href="legend_up.svg" width="100%" height="100%"/>
+        </svg>
+        <svg class="legend_item" width="223.5" height="228">
+          <image id="legend_bottom_img" href="legend_bottom.svg" width="100%" height="100%"/>
+        </svg>
+      </div>
+
+      <div id="overlay" class="first_time" onclick="toggleOverlay()"></div>
+
+      <script>
+        //var map = L.map('map').setView([0, 0], 1);
+        imageBounds = [[0, 0], [1000, 1000]];
+
+        const themeBtn = document.getElementById("theme_button");
+        const darkModeKey = "TrainMapDarkMode";
+
+        const enableDarkMode = () => {
+            document.body.classList.add("darkMode");
+            document.getElementById("map").classList.add("darkMode");
+
+            localStorage.setItem(darkModeKey, "true");
+
+            map.removeLayer(currentOverlay);
+            currentOverlay = L.imageOverlay("./map_dark.svg", imageBounds, {
+                className: "main_map",
+                attribution: '<a href="https://github.com/Lemon4ik6484">Lemonnik6484</a> | Tomzitiger'
+            }).addTo(map);
+
+            document.getElementById("logo_img").setAttribute('href', "./logo_dark.svg");
+            document.getElementById("legend_bottom_img").setAttribute('href', "./legend_bottom_dark.svg");
+            document.getElementById("legend_up_img").setAttribute('href', "./legend_up_dark.svg");
+            document.getElementById("theme_img").setAttribute('href', "./moon.svg");
+        };
+
+        const disableDarkMode = () => {
+            document.body.classList.remove("darkMode");
+            document.getElementById("map").classList.remove("darkMode");
+
+            localStorage.setItem(darkModeKey, "false");
+
+            map.removeLayer(currentOverlay);
+            currentOverlay = L.imageOverlay("./map.svg", imageBounds, {
+                className: "main_map",
+                attribution: '<a href="https://github.com/Lemon4ik6484">Lemonnik6484</a> | Tomzitiger'
+            }).addTo(map);
+
+            document.getElementById("logo_img").setAttribute('href', "./logo.svg");
+            document.getElementById("legend_bottom_img").setAttribute('href', "./legend_bottom.svg");
+            document.getElementById("legend_up_img").setAttribute('href', "./legend_up.svg");
+            document.getElementById("theme_img").setAttribute('href', "./sun.svg");
+        };
+
+        themeBtn.onclick = () => {
+            themeBtn.classList.toggle("moon");
+            if (themeBtn.classList.contains("moon")) {
+                enableDarkMode();
+                addStationDarkClass();
+            } else {
+                disableDarkMode();
+                removeStationDarkClass();
+            }
+        };
+
+        window.onload = function () {
+
+            map = L.map('map', {
+                crs: L.CRS.Simple,
+                minZoom: -1,
+                maxZoom: 2
+            });
+
+            map.fitBounds(imageBounds);
+            map.doubleClickZoom.disable();
+
+            var additionalTileLayer = L.tileLayer('map.svg');
+
+            map.removeControl(map.zoomControl);
+
+            const isDarkModeEnabled = localStorage.getItem(darkModeKey) === "true";
+            if (isDarkModeEnabled) {
+                themeBtn.classList.add("moon");
+                currentOverlay = L.imageOverlay('./dark_map.svg', imageBounds, {attribution: '<a href="https://github.com/Lemon4ik6484">Lemonnik6484</a> | Tomzitiger'}).addTo(map);
+                enableDarkMode();
+            } else {
+                themeBtn.classList.add("sun");
+                currentOverlay = L.imageOverlay('./map.svg', imageBounds, {attribution: '<a href="https://github.com/Lemon4ik6484">Lemonnik6484</a> | Tomzitiger'}).addTo(map);
+                disableDarkMode();
+            }
+        };
+      </script>
+</body>
+</html>
